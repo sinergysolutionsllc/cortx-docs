@@ -1,0 +1,5 @@
+# Paths requiring review (adjust team slugs if needed)
+/specs/ @sinergysolutionsllc/platform-arch @sinergysolutionsllc/secops
+/infra/ @sinergysolutionsllc/platform-arch
+/services/ @sinergysolutionsllc/backend-leads
+/frontend/ @sinergysolutionsllc/frontend-leads

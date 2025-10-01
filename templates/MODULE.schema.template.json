@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExampleModuleData",
+  "description": "This schema defines the data model for an example module within a CORTX suite.",
+  "type": "object",
+  "properties": {
+    "moduleId": {
+      "description": "The unique identifier for the module.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "moduleName": {
+      "description": "The name of the module.",
+      "type": "string"
+    },
+    "version": {
+      "description": "The version of the module data schema.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "data": {
+      "description": "The data payload for the module.",
+      "type": "object",
+      "properties": {
+        "field1": {
+          "type": "string"
+        },
+        "field2": {
+          "type": "number"
+        }
+      },
+      "required": ["field1"]
+    }
+  },
+  "required": ["moduleId", "moduleName", "version", "data"]
+}

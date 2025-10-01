@@ -1,0 +1,39 @@
+nav:
+  - Overview: overview/index.md
+  - Architecture:
+    - architecture/index.md
+    - Platform FDD: CORTX_PLATFORM_FDD.md
+    - Hierarchical RAG: HIERARCHICAL_RAG_ARCHITECTURE.md
+  - Services:
+    - services/index.md
+    - Gateway: services/gateway/README.md
+    - Identity: services/identity/README.md
+    - Validation: services/validation/README.md
+    - AI Broker: services/ai-broker/README.md
+    - Workflow: services/workflow/README.md
+    - Compliance: services/compliance/README.md
+    - Ledger: services/ledger/README.md
+    - OCR: services/ocr/README.md
+    - RAG: services/rag/README.md
+  - Suites: suites/index.md
+  - Packs:
+    - packs/index.md
+    - Pack Governance: packs/PACK_GOVERNANCE.md
+    - Authoring Guide: packs/PACK_AUTHORING_GUIDE.md
+    - RulePack Schema: packs/RULEPACK_SCHEMA.md
+    - WorkflowPack Schema: packs/WORKFLOWPACK_SCHEMA.md
+  - SDKs: sdks/index.md
+  - Security: security/index.md
+  - Operations: operations/index.md
+  - Contribute:
+    - contribute/index.md
+    - Repo Org Prompt: prompts/REPO_ORG_PROMPT.md
+    - Services Setup Prompt: prompts/SERVICES_SETUP_PROMPT.md
+  - ADRs:
+    - adrs/index.md
+    - ADR Index: adrs/ADR-000-index.md
+  - RFCs: rfcs/index.md
+  - Marketplace:
+    - marketplace/MARKETPLACE_VISION.md
+  - Tutorials:
+    - TUTORIAL.md

@@ -1,0 +1,11 @@
+architect:
+  goals:
+    - enforce contracts and repo standards
+  limits:
+    - no secrets
+coder:
+  goals:
+    - implement features with tests
+reviewer:
+  goals:
+    - enforce CODEOWNERS, lint, coverage

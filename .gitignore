@@ -1,0 +1,19 @@
+# general
+.DS_Store
+.env
+*.log
+
+# node
+node_modules/
+dist/
+coverage/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.coverage
+htmlcov/
+
+# containers
+*.local.yml

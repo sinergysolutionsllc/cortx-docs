@@ -1,0 +1,53 @@
+name: docs-ci
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs-ci.yml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install mkdocs deps
+        run: |
+          pip install mkdocs-material mkdocs-macros-plugin
+      - name: Verify OpenAPI sync
+        run: |
+          python scripts/verify_openapi_sync.py
+      - name: Build docs (strict)
+        run: |
+          mkdocs build --strict
+
+  check-docs-copies-changes:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect changes to docs OpenAPI copies without service changes
+        run: |
+          set -e
+          # List changed files between base and head of PR
+          BASE_SHA=$(jq -r '.pull_request.base.sha' <<<'${{ toJson(github.event) }}')
+          HEAD_SHA=$(jq -r '.pull_request.head.sha' <<<'${{ toJson(github.event) }}')
+          git fetch origin "$BASE_SHA" "$HEAD_SHA"
+          CHANGED=$(git diff --name-only "$BASE_SHA".."$HEAD_SHA" | sort -u)
+          printf "%s
+" "$CHANGED" > changed.txt || true
+          echo "Changed files:" && cat changed.txt || true
+          DOCS_CHANGED=$(grep -E '^docs/services/.+/openapi\.yaml$' changed.txt || true)
+          SRV_CHANGED=$(grep -E '^services/.+/openapi\.yaml$' changed.txt || true)
+          if [ -n "$DOCS_CHANGED" ] && [ -z "$SRV_CHANGED" ]; then
+            echo "Docs copies changed but authoritative service specs did not. Please edit only services/<svc>/openapi.yaml and run 'make publish-openapi'."; exit 1
+          fi
+          echo "Change policy OK."

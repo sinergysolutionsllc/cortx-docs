@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OCR Extract Request (example)",
+    "type": "object",
+    "properties": {
+      "source_type": { "type": "string", "enum": ["upload", "url"] },
+      "source_uri": { "type": "string" },
+      "languages": { "type": "array", "items": { "type": "string" } },
+      "features": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["source_type"],
+    "additionalProperties": false,
+    "examples": [{
+      "source_type": "url",
+      "source_uri": "https://county.gov/records/plat-1234.pdf",
+      "languages": ["eng"],
+      "features": ["text","tables"]
+    }]
+  }

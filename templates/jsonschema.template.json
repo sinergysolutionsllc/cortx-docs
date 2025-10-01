@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RAG Ingest Request (example)",
+  "description": "Concrete JSON Schema aligned with svc-rag IngestRequest.",
+  "type": "object",
+  "properties": {
+    "level": { "type": "string", "enum": ["platform", "suite", "module", "entity"] },
+    "suite_id": { "type": "string" },
+    "module_id": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "source_type": { "type": "string", "enum": ["upload", "url", "api"] },
+    "source_uri": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["level", "source_type"],
+  "additionalProperties": false,
+  "examples": [{
+    "level": "module",
+    "suite_id": "fedsuite",
+    "module_id": "fedtransform",
+    "source_type": "url",
+    "source_uri": "https://omb.gov/circulars/a-136.pdf",
+    "metadata": { "tags": ["policy", "federal"] }
+  }]
+}

@@ -1,0 +1,4 @@
+# Cursor/Claude Code Rules
+preferTests=true
+blockSecrets=true
+enforceContracts=true

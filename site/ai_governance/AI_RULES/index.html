@@ -1,0 +1,3082 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>AI Development Rules & Guidelines - CORTX by Sinergy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-development-rules-guidelines" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CORTX by Sinergy" class="md-header__button md-logo" aria-label="CORTX by Sinergy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CORTX by Sinergy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI Development Rules &amp; Guidelines
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CORTX by Sinergy" class="md-nav__button md-logo" aria-label="CORTX by Sinergy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CORTX by Sinergy
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gateway
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gateway
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gateway (8080)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Identity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Identity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Identity (8082)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation (8083)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Broker
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI Broker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Broker (8085)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Workflow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflow (8130)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Compliance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance (8135)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ledger
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ledger
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger (8136)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    OCR
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            OCR
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OCR (8137)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            RAG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RAG (8138)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../suites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Suites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../packs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Packs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDKs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-compliance-first-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Compliance-First Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-code-quality-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Code Quality Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-security-first-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Security-First Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-platform-coherence" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Platform Coherence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-roles-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Agent Roles &amp; Responsibilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Agent Roles &amp; Responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tech-lead-architect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Lead Architect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-services-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Services Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uifrontend-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI/Frontend Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcp-deploymentops-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCP Deployment/Ops Engineer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-assurance-lead" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Assurance Lead
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-generation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Generation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Generation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-fastapi-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python (FastAPI Services)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python (FastAPI Services)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-nextjs-sdks" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript (Next.js, SDKs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypeScript (Next.js, SDKs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#component-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Client
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulepackworkflowpack-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      RulePack/WorkflowPack Definitions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RulePack/WorkflowPack Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rulepack-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      RulePack (JSON)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowpack-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      WorkflowPack (YAML)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-model-usage-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Model Usage Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Model Usage Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAG (Retrieval-Augmented Generation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pii-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      PII Protection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-logging-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit Logging Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audit Logging Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-all-critical-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log All Critical Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Targets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns-anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns &amp; Anti-Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns &amp; Anti-Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patterns ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Patterns ❌
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-improvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Improvement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Improvement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Base Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enforcement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact &amp; Support
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai-development-rules-guidelines">AI Development Rules &amp; Guidelines</h1>
+<p><strong>Version:</strong> 1.0.0
+<strong>Last Updated:</strong> 2025-10-01
+<strong>Owner:</strong> Platform Architecture Team
+<strong>Classification:</strong> Internal</p>
+<hr />
+<h2 id="purpose">Purpose</h2>
+<p>This document establishes rules, guidelines, and best practices for AI-assisted development within the CORTX Platform ecosystem. These rules ensure consistent, high-quality, secure, and compliant code generation across all Sinergy Solutions repositories.</p>
+<hr />
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="1-compliance-first-development">1. Compliance-First Development</h3>
+<ul>
+<li><strong>All AI-generated code MUST align with regulatory requirements</strong> (FedRAMP, HIPAA, NIST 800-53, SOC 2)</li>
+<li>Security controls and audit logging are non-negotiable</li>
+<li>Privacy by design: PII redaction before any LLM processing</li>
+<li>Immutable audit trails for all critical operations</li>
+</ul>
+<h3 id="2-code-quality-standards">2. Code Quality Standards</h3>
+<ul>
+<li><strong>Test coverage:</strong> Maintain &gt;80% unit test coverage for all new code</li>
+<li><strong>Type safety:</strong> Use strict typing (Python type hints, TypeScript strict mode)</li>
+<li><strong>Documentation:</strong> All public APIs must have OpenAPI/JSDoc comments</li>
+<li><strong>Error handling:</strong> Comprehensive error handling with contextual messages</li>
+</ul>
+<h3 id="3-security-first-approach">3. Security-First Approach</h3>
+<ul>
+<li>Never include secrets, API keys, or credentials in code</li>
+<li>All sensitive data must use environment variables or GCP Secret Manager</li>
+<li>Input validation on all user-provided data</li>
+<li>Safe operators only (no eval, exec, or code injection vectors)</li>
+<li>SQL injection prevention: Use parameterized queries exclusively</li>
+</ul>
+<h3 id="4-platform-coherence">4. Platform Coherence</h3>
+<ul>
+<li>Follow established patterns from existing services</li>
+<li>Maintain consistency across microservices architecture</li>
+<li>Respect service boundaries and API contracts</li>
+<li>Use shared libraries and common utilities</li>
+</ul>
+<hr />
+<h2 id="ai-agent-roles-responsibilities">AI Agent Roles &amp; Responsibilities</h2>
+<h3 id="tech-lead-architect">Tech Lead Architect</h3>
+<p><strong>Context:</strong> Cross-repository architecture, platform-wide decisions, API contracts</p>
+<p><strong>Responsibilities:</strong>
+- Design service interfaces and inter-service communication patterns
+- Define data models and database schemas
+- Establish API versioning and backward compatibility strategies
+- Review and approve architectural decision records (ADRs)</p>
+<p><strong>Rules:</strong>
+- Always consider multi-tenant implications
+- Document API contracts in OpenAPI 3.0 format
+- Ensure services are independently deployable
+- Plan for horizontal scalability from day one</p>
+<h3 id="backend-services-developer">Backend Services Developer</h3>
+<p><strong>Context:</strong> FastAPI services, business logic, data access, integrations</p>
+<p><strong>Responsibilities:</strong>
+- Implement RESTful APIs following OpenAPI specifications
+- Write database queries with proper indexing
+- Implement business logic with comprehensive error handling
+- Create unit and integration tests for all endpoints</p>
+<p><strong>Rules:</strong>
+- Use FastAPI dependency injection for all shared resources
+- Implement request/response validation with Pydantic models
+- Add correlation IDs to all log entries
+- Include health check and readiness probe endpoints
+- Never bypass RBAC checks</p>
+<h3 id="uifrontend-developer">UI/Frontend Developer</h3>
+<p><strong>Context:</strong> Next.js applications, React components, Tailwind CSS, user experience</p>
+<p><strong>Responsibilities:</strong>
+- Build responsive, accessible user interfaces
+- Implement client-side state management
+- Integrate with backend APIs using typed clients
+- Create reusable component libraries</p>
+<p><strong>Rules:</strong>
+- Use TypeScript strict mode exclusively
+- Implement proper error boundaries
+- Follow WCAG 2.1 AA accessibility standards
+- Use React Query for server state management
+- Implement proper loading and error states</p>
+<h3 id="gcp-deploymentops-engineer">GCP Deployment/Ops Engineer</h3>
+<p><strong>Context:</strong> Cloud infrastructure, Terraform, CI/CD, monitoring, security</p>
+<p><strong>Responsibilities:</strong>
+- Maintain Terraform infrastructure as code
+- Configure Cloud Run services with proper resource limits
+- Set up monitoring, logging, and alerting
+- Manage secrets and service accounts</p>
+<p><strong>Rules:</strong>
+- All infrastructure changes must be in Terraform
+- Use least privilege principle for IAM roles
+- Enable Cloud Armor for DDoS protection
+- Configure automatic scaling and health checks
+- Implement proper backup and disaster recovery</p>
+<h3 id="quality-assurance-lead">Quality Assurance Lead</h3>
+<p><strong>Context:</strong> Testing strategy, quality metrics, CI/CD pipeline, test automation</p>
+<p><strong>Responsibilities:</strong>
+- Define and maintain test coverage standards
+- Create test plans for new features
+- Review test quality and effectiveness
+- Track and report quality metrics</p>
+<p><strong>Rules:</strong>
+- Require tests for all pull requests
+- Block merges if coverage drops below 80%
+- Maintain separate test fixtures and utilities
+- Use pytest for Python, Jest for TypeScript
+- Implement contract testing for service boundaries</p>
+<hr />
+<h2 id="code-generation-guidelines">Code Generation Guidelines</h2>
+<h3 id="python-fastapi-services">Python (FastAPI Services)</h3>
+<h4 id="service-structure">Service Structure</h4>
+<pre><code class="language-python"># REQUIRED: Type hints for all functions
+from typing import Optional, List
+from pydantic import BaseModel, Field
+from fastapi import FastAPI, HTTPException, Depends
+
+# REQUIRED: Structured logging with correlation IDs
+import structlog
+logger = structlog.get_logger()
+
+# REQUIRED: Request/Response models with validation
+class RequestModel(BaseModel):
+    field: str = Field(..., description=&quot;Field description&quot;)
+    tenant_id: str = Field(..., pattern=&quot;^[a-z0-9-]+$&quot;)
+
+# REQUIRED: Dependency injection for auth
+async def verify_token(token: str = Depends(oauth2_scheme)):
+    # Validate JWT, extract claims
+    pass
+
+# REQUIRED: Comprehensive error handling
+@app.post(&quot;/api/v1/resource&quot;)
+async def create_resource(
+    request: RequestModel,
+    user=Depends(verify_token)
+):
+    try:
+        logger.info(
+            &quot;resource.create.start&quot;,
+            tenant_id=request.tenant_id,
+            user_id=user.id
+        )
+        # Implementation
+        return {&quot;status&quot;: &quot;success&quot;}
+    except Exception as e:
+        logger.error(
+            &quot;resource.create.failed&quot;,
+            error=str(e),
+            tenant_id=request.tenant_id
+        )
+        raise HTTPException(status_code=500, detail=&quot;Resource creation failed&quot;)
+</code></pre>
+<h4 id="database-access">Database Access</h4>
+<pre><code class="language-python"># REQUIRED: Use SQLAlchemy or raw SQL with parameters (never string interpolation)
+from sqlalchemy import text
+
+async def get_user(tenant_id: str, user_id: str):
+    # CORRECT: Parameterized query
+    query = text(&quot;&quot;&quot;
+        SELECT * FROM :tenant_schema.users
+        WHERE user_id = :user_id
+    &quot;&quot;&quot;)
+    result = await db.execute(
+        query,
+        {&quot;tenant_schema&quot;: tenant_id, &quot;user_id&quot;: user_id}
+    )
+
+    # WRONG: String interpolation (SQL injection risk)
+    # query = f&quot;SELECT * FROM {tenant_id}.users WHERE user_id = '{user_id}'&quot;
+</code></pre>
+<h4 id="testing">Testing</h4>
+<pre><code class="language-python"># REQUIRED: Test structure with fixtures
+import pytest
+from fastapi.testclient import TestClient
+
+@pytest.fixture
+def client():
+    return TestClient(app)
+
+@pytest.fixture
+def mock_auth():
+    # Return mock user context
+    pass
+
+def test_create_resource_success(client, mock_auth):
+    &quot;&quot;&quot;Test successful resource creation with valid input.&quot;&quot;&quot;
+    response = client.post(
+        &quot;/api/v1/resource&quot;,
+        json={&quot;field&quot;: &quot;value&quot;, &quot;tenant_id&quot;: &quot;test-tenant&quot;},
+        headers={&quot;Authorization&quot;: f&quot;Bearer {mock_auth.token}&quot;}
+    )
+    assert response.status_code == 200
+    assert response.json()[&quot;status&quot;] == &quot;success&quot;
+
+def test_create_resource_unauthorized(client):
+    &quot;&quot;&quot;Test resource creation fails without authentication.&quot;&quot;&quot;
+    response = client.post(&quot;/api/v1/resource&quot;, json={})
+    assert response.status_code == 401
+</code></pre>
+<h3 id="typescript-nextjs-sdks">TypeScript (Next.js, SDKs)</h3>
+<h4 id="component-structure">Component Structure</h4>
+<pre><code class="language-typescript">// REQUIRED: Strict TypeScript
+interface ResourceProps {
+  resourceId: string;
+  tenantId: string;
+  onUpdate?: (resource: Resource) =&gt; void;
+}
+
+// REQUIRED: Error boundaries and loading states
+export const ResourceComponent: React.FC&lt;ResourceProps&gt; = ({
+  resourceId,
+  tenantId,
+  onUpdate
+}) =&gt; {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['resource', resourceId],
+    queryFn: () =&gt; api.getResource(resourceId, tenantId)
+  });
+
+  if (isLoading) return &lt;LoadingSpinner /&gt;;
+  if (error) return &lt;ErrorDisplay error={error} /&gt;;
+  if (!data) return &lt;EmptyState /&gt;;
+
+  return (
+    &lt;div className=&quot;resource-container&quot;&gt;
+      {/* Implementation */}
+    &lt;/div&gt;
+  );
+};
+</code></pre>
+<h4 id="api-client">API Client</h4>
+<pre><code class="language-typescript">// REQUIRED: Type-safe API clients
+interface CortxApiClient {
+  getResource(id: string, tenantId: string): Promise&lt;Resource&gt;;
+  createResource(data: CreateResourceRequest): Promise&lt;Resource&gt;;
+}
+
+// REQUIRED: Error handling with specific error types
+class ApiError extends Error {
+  constructor(
+    message: string,
+    public statusCode: number,
+    public code: string
+  ) {
+    super(message);
+  }
+}
+
+export const cortxClient: CortxApiClient = {
+  async getResource(id: string, tenantId: string) {
+    try {
+      const response = await fetch(`/api/v1/resources/${id}`, {
+        headers: {
+          'X-Tenant-ID': tenantId,
+          'Authorization': `Bearer ${getToken()}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new ApiError(
+          'Failed to fetch resource',
+          response.status,
+          'RESOURCE_FETCH_FAILED'
+        );
+      }
+
+      return await response.json();
+    } catch (error) {
+      logger.error('API call failed', { id, tenantId, error });
+      throw error;
+    }
+  }
+};
+</code></pre>
+<h3 id="rulepackworkflowpack-definitions">RulePack/WorkflowPack Definitions</h3>
+<h4 id="rulepack-json">RulePack (JSON)</h4>
+<pre><code class="language-json">{
+  &quot;metadata&quot;: {
+    &quot;pack_id&quot;: &quot;example-validation-v1&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;compliance&quot;: [&quot;NIST-800-53-AC-3&quot;],
+    &quot;created_by&quot;: &quot;sinergy-platform&quot;,
+    &quot;created_at&quot;: &quot;2025-10-01T00:00:00Z&quot;,
+    &quot;description&quot;: &quot;Example validation rules for demonstration&quot;
+  },
+  &quot;rules&quot;: [
+    {
+      &quot;rule_id&quot;: &quot;EXAMPLE-001&quot;,
+      &quot;type&quot;: &quot;FATAL&quot;,
+      &quot;field&quot;: &quot;user_id&quot;,
+      &quot;operator&quot;: &quot;matches&quot;,
+      &quot;pattern&quot;: &quot;^[a-z0-9_-]{3,64}$&quot;,
+      &quot;error_message&quot;: &quot;User ID must be 3-64 characters (lowercase alphanumeric, hyphens, underscores)&quot;
+    },
+    {
+      &quot;rule_id&quot;: &quot;EXAMPLE-002&quot;,
+      &quot;type&quot;: &quot;WARNING&quot;,
+      &quot;field&quot;: &quot;email&quot;,
+      &quot;operator&quot;: &quot;matches&quot;,
+      &quot;pattern&quot;: &quot;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$&quot;,
+      &quot;error_message&quot;: &quot;Email format appears invalid&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="workflowpack-yaml">WorkflowPack (YAML)</h4>
+<pre><code class="language-yaml">workflow_id: example-workflow-v1
+version: 1.0.0
+description: Example workflow demonstrating step types
+
+metadata:
+  compliance: [SOC2-CC6.1]
+  created_by: sinergy-platform
+  created_at: &quot;2025-10-01T00:00:00Z&quot;
+
+steps:
+  - id: validate_input
+    type: validation
+    config:
+      rulepack: example-validation-v1
+      on_failure: halt
+
+  - id: check_eligibility
+    type: decision
+    config:
+      condition: &quot;input.status == 'active'&quot;
+      on_true: process_record
+      on_false: skip_processing
+
+  - id: process_record
+    type: calculation
+    config:
+      formula: &quot;input.amount * 1.05&quot;
+      output_field: &quot;adjusted_amount&quot;
+
+  - id: ai_review
+    type: ai-inference
+    config:
+      model: gemini-1.5-flash
+      prompt: &quot;Review this record for anomalies: {{input}}&quot;
+      max_tokens: 500
+
+  - id: human_approval
+    type: approval
+    config:
+      role: COMPLIANCE_OFFICER
+      timeout_hours: 24
+
+  - id: submit_result
+    type: data-sink
+    config:
+      endpoint: &quot;https://api.example.com/submit&quot;
+      method: POST
+      headers:
+        Content-Type: application/json
+</code></pre>
+<hr />
+<h2 id="ai-model-usage-guidelines">AI Model Usage Guidelines</h2>
+<h3 id="model-selection">Model Selection</h3>
+<p><strong>Gemini 1.5 Flash</strong> (Current Default):
+- Use for: Quick responses, simple explanations, routine queries
+- Cost: Low
+- Latency: 200-500ms
+- Context window: 1M tokens</p>
+<p><strong>Gemini 1.5 Pro</strong> (High Complexity):
+- Use for: Complex reasoning, multi-step workflows, code generation
+- Cost: Medium
+- Latency: 500-1500ms
+- Context window: 1M tokens</p>
+<p><strong>Claude 3.5 Sonnet</strong> (Planned):
+- Use for: Highest quality code generation, complex reasoning
+- Cost: High
+- Latency: 1000-2000ms
+- Context window: 200K tokens</p>
+<h3 id="rag-retrieval-augmented-generation">RAG (Retrieval-Augmented Generation)</h3>
+<p><strong>Vector Store Management:</strong>
+- Embed compliance documents (Treasury rules, HIPAA guidelines, NIST controls)
+- Update embeddings when source documents change
+- Use 384-dimensional embeddings (sentence-transformers)
+- Threshold: 0.5 cosine similarity minimum</p>
+<p><strong>Knowledge Base Documents:</strong>
+- OMB Circular A-136 (Treasury Financial Reporting)
+- GTAS Validation Rules (204 rules)
+- HIPAA Security Rule (Technical Safeguards)
+- NIST 800-53 Rev 5 Control Catalog
+- FedRAMP Authorization Boundary Guidance
+- CORTX Platform API Documentation
+- RulePack/WorkflowPack Schema Definitions</p>
+<p><strong>Retrieval Strategy:</strong></p>
+<pre><code class="language-python"># Example RAG retrieval
+async def get_compliance_context(query: str) -&gt; List[Document]:
+    # Generate query embedding
+    query_embedding = await embedding_model.embed(query)
+
+    # Search vector store
+    results = await vector_store.similarity_search(
+        query_embedding,
+        k=5,  # Top 5 most relevant
+        threshold=0.5  # Minimum similarity
+    )
+
+    # Boost results with keyword matches
+    for result in results:
+        if any(keyword in result.content.lower() for keyword in query.lower().split()):
+            result.score *= 1.2
+
+    return sorted(results, key=lambda r: r.score, reverse=True)
+</code></pre>
+<h3 id="pii-protection">PII Protection</h3>
+<p><strong>Always redact before LLM calls:</strong>
+- Social Security Numbers (SSN): XXX-XX-1234
+- Credit Card Numbers: <strong><em>* </em></strong><em> </em><strong><em> 1234
+- Email addresses: u</em></strong>r@domain.com
+- Phone numbers: (<strong><em>) </em></strong>-1234
+- IP addresses: <strong><em>.</em></strong>.***.123</p>
+<p><strong>Redaction Implementation:</strong></p>
+<pre><code class="language-python">import re
+
+PII_PATTERNS = {
+    'ssn': r'\b\d{3}-\d{2}-\d{4}\b',
+    'credit_card': r'\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b',
+    'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
+    'phone': r'\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b'
+}
+
+def redact_pii(text: str) -&gt; str:
+    &quot;&quot;&quot;Redact PII before sending to LLM.&quot;&quot;&quot;
+    for pii_type, pattern in PII_PATTERNS.items():
+        text = re.sub(pattern, f'[REDACTED_{pii_type.upper()}]', text)
+    return text
+</code></pre>
+<hr />
+<h2 id="security-requirements">Security Requirements</h2>
+<h3 id="authentication-authorization">Authentication &amp; Authorization</h3>
+<p><strong>JWT Token Validation:</strong></p>
+<pre><code class="language-python">from jose import jwt, JWTError
+
+async def verify_jwt(token: str) -&gt; dict:
+    try:
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[&quot;RS256&quot;],
+            audience=&quot;cortx-platform&quot;,
+            issuer=&quot;identity-service&quot;
+        )
+
+        # Verify required claims
+        required_claims = ['sub', 'tenant_id', 'roles', 'exp']
+        if not all(claim in payload for claim in required_claims):
+            raise JWTError(&quot;Missing required claims&quot;)
+
+        return payload
+    except JWTError as e:
+        logger.error(&quot;JWT validation failed&quot;, error=str(e))
+        raise HTTPException(status_code=401, detail=&quot;Invalid token&quot;)
+</code></pre>
+<p><strong>RBAC Enforcement:</strong></p>
+<pre><code class="language-python">from enum import Enum
+
+class Permission(Enum):
+    EXECUTE_WORKFLOW = &quot;execute:workflows&quot;
+    CREATE_PACK = &quot;create:packs&quot;
+    VIEW_AUDIT_LOGS = &quot;view:audit_logs&quot;
+
+def require_permission(permission: Permission):
+    async def dependency(user=Depends(verify_token)):
+        if permission.value not in user.get('permissions', []):
+            raise HTTPException(
+                status_code=403,
+                detail=f&quot;Missing required permission: {permission.value}&quot;
+            )
+        return user
+    return dependency
+
+# Usage
+@app.post(&quot;/api/v1/workflows/execute&quot;)
+async def execute_workflow(
+    user=Depends(require_permission(Permission.EXECUTE_WORKFLOW))
+):
+    pass
+</code></pre>
+<h3 id="input-validation">Input Validation</h3>
+<p><strong>Always validate user input:</strong></p>
+<pre><code class="language-python">from pydantic import BaseModel, Field, validator
+
+class UserInput(BaseModel):
+    username: str = Field(..., min_length=3, max_length=64, pattern=&quot;^[a-z0-9_-]+$&quot;)
+    email: str = Field(..., regex=r&quot;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&quot;)
+    tenant_id: str
+
+    @validator('tenant_id')
+    def validate_tenant_id(cls, v):
+        if not re.match(r'^[a-z0-9-]+$', v):
+            raise ValueError('Invalid tenant_id format')
+        return v
+
+    class Config:
+        # Reject unknown fields
+        extra = 'forbid'
+</code></pre>
+<h3 id="secrets-management">Secrets Management</h3>
+<p><strong>Never hardcode secrets:</strong></p>
+<pre><code class="language-python"># WRONG
+API_KEY = &quot;sk_live_abc123xyz&quot;
+
+# CORRECT: Use environment variables
+import os
+API_KEY = os.getenv(&quot;GEMINI_API_KEY&quot;)
+if not API_KEY:
+    raise ValueError(&quot;GEMINI_API_KEY environment variable not set&quot;)
+
+# BETTER: Use GCP Secret Manager
+from google.cloud import secretmanager
+
+def get_secret(secret_id: str) -&gt; str:
+    client = secretmanager.SecretManagerServiceClient()
+    name = f&quot;projects/{PROJECT_ID}/secrets/{secret_id}/versions/latest&quot;
+    response = client.access_secret_version(request={&quot;name&quot;: name})
+    return response.payload.data.decode(&quot;UTF-8&quot;)
+
+API_KEY = get_secret(&quot;gemini-api-key&quot;)
+</code></pre>
+<hr />
+<h2 id="audit-logging-requirements">Audit Logging Requirements</h2>
+<h3 id="log-all-critical-events">Log All Critical Events</h3>
+<p><strong>Required fields in every audit log:</strong>
+- <code>timestamp</code>: ISO 8601 format
+- <code>event_type</code>: Descriptive event name (e.g., "workflow_executed")
+- <code>tenant_id</code>: Multi-tenant isolation
+- <code>user_id</code>: Actor performing action
+- <code>session_id</code>: Session correlation
+- <code>correlation_id</code>: Request tracing
+- <code>status</code>: success/failure
+- <code>details</code>: Event-specific metadata
+- <code>compliance_tags</code>: Applicable frameworks</p>
+<p><strong>Example implementation:</strong></p>
+<pre><code class="language-python">import structlog
+from datetime import datetime
+
+logger = structlog.get_logger()
+
+async def log_audit_event(
+    event_type: str,
+    tenant_id: str,
+    user_id: str,
+    session_id: str,
+    correlation_id: str,
+    status: str,
+    details: dict,
+    compliance_tags: List[str]
+):
+    logger.info(
+        event_type,
+        timestamp=datetime.utcnow().isoformat(),
+        tenant_id=tenant_id,
+        user_id=user_id,
+        session_id=session_id,
+        correlation_id=correlation_id,
+        status=status,
+        details=details,
+        compliance_tags=compliance_tags
+    )
+
+    # Also write to compliance service for immutable storage
+    await compliance_service.store_audit_log({
+        &quot;timestamp&quot;: datetime.utcnow().isoformat(),
+        &quot;event_type&quot;: event_type,
+        &quot;tenant_id&quot;: tenant_id,
+        &quot;user_id&quot;: user_id,
+        &quot;session_id&quot;: session_id,
+        &quot;correlation_id&quot;: correlation_id,
+        &quot;status&quot;: status,
+        &quot;details&quot;: details,
+        &quot;compliance_tags&quot;: compliance_tags
+    })
+</code></pre>
+<hr />
+<h2 id="testing-requirements">Testing Requirements</h2>
+<h3 id="coverage-targets">Coverage Targets</h3>
+<ul>
+<li><strong>Unit tests:</strong> &gt;80% line coverage</li>
+<li><strong>Integration tests:</strong> All service-to-service interactions</li>
+<li><strong>E2E tests:</strong> Critical user journeys</li>
+<li><strong>Contract tests:</strong> All API endpoints</li>
+</ul>
+<h3 id="test-structure">Test Structure</h3>
+<p><strong>Python (pytest):</strong></p>
+<pre><code class="language-python"># tests/unit/test_validation_service.py
+import pytest
+from app.services.validation import validate_rulepack
+
+class TestValidationService:
+    &quot;&quot;&quot;Unit tests for RulePack validation service.&quot;&quot;&quot;
+
+    @pytest.fixture
+    def sample_rulepack(self):
+        return {
+            &quot;metadata&quot;: {&quot;pack_id&quot;: &quot;test-v1&quot;, &quot;version&quot;: &quot;1.0.0&quot;},
+            &quot;rules&quot;: [
+                {
+                    &quot;rule_id&quot;: &quot;TEST-001&quot;,
+                    &quot;type&quot;: &quot;FATAL&quot;,
+                    &quot;field&quot;: &quot;amount&quot;,
+                    &quot;operator&quot;: &quot;&gt;&quot;,
+                    &quot;value&quot;: 0,
+                    &quot;error_message&quot;: &quot;Amount must be positive&quot;
+                }
+            ]
+        }
+
+    @pytest.fixture
+    def sample_data(self):
+        return {&quot;amount&quot;: 100, &quot;currency&quot;: &quot;USD&quot;}
+
+    def test_validate_rulepack_success(self, sample_rulepack, sample_data):
+        &quot;&quot;&quot;Test successful validation with valid data.&quot;&quot;&quot;
+        result = validate_rulepack(sample_rulepack, sample_data)
+        assert result.is_valid
+        assert len(result.violations) == 0
+
+    def test_validate_rulepack_fatal_error(self, sample_rulepack):
+        &quot;&quot;&quot;Test validation fails with FATAL error on negative amount.&quot;&quot;&quot;
+        invalid_data = {&quot;amount&quot;: -50, &quot;currency&quot;: &quot;USD&quot;}
+        result = validate_rulepack(sample_rulepack, invalid_data)
+        assert not result.is_valid
+        assert len(result.violations) == 1
+        assert result.violations[0].severity == &quot;FATAL&quot;
+</code></pre>
+<p><strong>TypeScript (Jest):</strong></p>
+<pre><code class="language-typescript">// tests/unit/api-client.test.ts
+import { cortxClient } from '@/lib/api-client';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+const server = setupServer(
+  rest.get('/api/v1/resources/:id', (req, res, ctx) =&gt; {
+    return res(ctx.json({ id: req.params.id, status: 'active' }));
+  })
+);
+
+beforeAll(() =&gt; server.listen());
+afterEach(() =&gt; server.resetHandlers());
+afterAll(() =&gt; server.close());
+
+describe('CortxApiClient', () =&gt; {
+  it('should fetch resource successfully', async () =&gt; {
+    const resource = await cortxClient.getResource('test-123', 'tenant-1');
+    expect(resource.id).toBe('test-123');
+    expect(resource.status).toBe('active');
+  });
+
+  it('should throw ApiError on 404', async () =&gt; {
+    server.use(
+      rest.get('/api/v1/resources/:id', (req, res, ctx) =&gt; {
+        return res(ctx.status(404));
+      })
+    );
+
+    await expect(
+      cortxClient.getResource('missing', 'tenant-1')
+    ).rejects.toThrow('Failed to fetch resource');
+  });
+});
+</code></pre>
+<hr />
+<h2 id="documentation-requirements">Documentation Requirements</h2>
+<h3 id="code-documentation">Code Documentation</h3>
+<p><strong>Python docstrings (Google style):</strong></p>
+<pre><code class="language-python">def execute_workflow(
+    workflow_id: str,
+    tenant_id: str,
+    input_data: dict,
+    user_context: dict
+) -&gt; WorkflowResult:
+    &quot;&quot;&quot;Execute a WorkflowPack with the provided input data.
+
+    Args:
+        workflow_id: Unique identifier for the workflow (e.g., &quot;gtas-monthly-v1&quot;)
+        tenant_id: Tenant identifier for multi-tenant isolation
+        input_data: Input data to process through the workflow
+        user_context: User authentication and authorization context
+
+    Returns:
+        WorkflowResult containing execution status, outputs, and audit trail
+
+    Raises:
+        WorkflowNotFoundError: If workflow_id does not exist
+        ValidationError: If input_data fails schema validation
+        PermissionError: If user lacks execute:workflows permission
+
+    Example:
+        &gt;&gt;&gt; result = execute_workflow(
+        ...     workflow_id=&quot;gtas-monthly-v1&quot;,
+        ...     tenant_id=&quot;agency-dod-001&quot;,
+        ...     input_data={&quot;records&quot;: [...]},
+        ...     user_context={&quot;user_id&quot;: &quot;jane.doe&quot;, &quot;roles&quot;: [&quot;SUITE_OPERATOR&quot;]}
+        ... )
+        &gt;&gt;&gt; print(result.status)
+        'completed'
+    &quot;&quot;&quot;
+    pass
+</code></pre>
+<p><strong>TypeScript JSDoc:</strong></p>
+<pre><code class="language-typescript">/**
+ * Execute a WorkflowPack with the provided input data.
+ *
+ * @param workflowId - Unique identifier for the workflow
+ * @param tenantId - Tenant identifier for multi-tenant isolation
+ * @param inputData - Input data to process through the workflow
+ * @returns Promise resolving to WorkflowResult
+ * @throws {WorkflowNotFoundError} If workflow_id does not exist
+ * @throws {ValidationError} If input_data fails schema validation
+ *
+ * @example
+ * ```typescript
+ * const result = await executeWorkflow(
+ *   'gtas-monthly-v1',
+ *   'agency-dod-001',
+ *   { records: [...] }
+ * );
+ * console.log(result.status); // 'completed'
+ * ```
+ */
+export async function executeWorkflow(
+  workflowId: string,
+  tenantId: string,
+  inputData: unknown
+): Promise&lt;WorkflowResult&gt; {
+  // Implementation
+}
+</code></pre>
+<h3 id="api-documentation">API Documentation</h3>
+<p><strong>All endpoints must have OpenAPI specs:</strong></p>
+<pre><code class="language-python">from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI(
+    title=&quot;CORTX Validation Service&quot;,
+    description=&quot;RulePack execution and data validation&quot;,
+    version=&quot;1.0.0&quot;,
+    docs_url=&quot;/docs&quot;,
+    openapi_url=&quot;/openapi.json&quot;
+)
+
+class ExecuteRequest(BaseModel):
+    &quot;&quot;&quot;Request model for RulePack execution.&quot;&quot;&quot;
+    rulepack_id: str = Field(..., description=&quot;RulePack identifier&quot;)
+    data: dict = Field(..., description=&quot;Data to validate&quot;)
+
+    class Config:
+        schema_extra = {
+            &quot;example&quot;: {
+                &quot;rulepack_id&quot;: &quot;federal-gtas-v1&quot;,
+                &quot;data&quot;: {&quot;TAS&quot;: &quot;012-3456&quot;, &quot;amount&quot;: 1000.00}
+            }
+        }
+
+@app.post(
+    &quot;/api/v1/validate&quot;,
+    response_model=ValidationResult,
+    summary=&quot;Execute RulePack validation&quot;,
+    description=&quot;Validate data against a RulePack and return violations&quot;,
+    tags=[&quot;Validation&quot;]
+)
+async def execute_rulepack(request: ExecuteRequest):
+    &quot;&quot;&quot;Execute RulePack validation endpoint.&quot;&quot;&quot;
+    pass
+</code></pre>
+<hr />
+<h2 id="performance-guidelines">Performance Guidelines</h2>
+<h3 id="database-queries">Database Queries</h3>
+<ul>
+<li>Use connection pooling (min=5, max=20 connections)</li>
+<li>Index all foreign keys and frequently queried columns</li>
+<li>Avoid N+1 queries (use eager loading)</li>
+<li>Batch operations for bulk inserts/updates</li>
+<li>Limit result sets (default max=1000 records)</li>
+</ul>
+<h3 id="caching-strategy">Caching Strategy</h3>
+<ul>
+<li>Cache frequently accessed configuration (TTL: 5 minutes)</li>
+<li>Cache RulePack/WorkflowPack definitions (TTL: 1 hour, invalidate on update)</li>
+<li>Use Redis for distributed caching</li>
+<li>Implement cache warming for critical paths</li>
+</ul>
+<h3 id="api-rate-limiting">API Rate Limiting</h3>
+<ul>
+<li>Default: 100 requests/second per tenant</li>
+<li>Burst: 200 requests/second (10 second window)</li>
+<li>Use Redis for distributed rate limiting</li>
+<li>Return <code>Retry-After</code> header on 429 responses</li>
+</ul>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist</h2>
+<p>Before deploying AI-generated code:</p>
+<ul>
+<li>[ ] All tests pass (<code>make test</code>)</li>
+<li>[ ] Coverage meets threshold (&gt;80%)</li>
+<li>[ ] Linting passes with no errors</li>
+<li>[ ] Security scan passes (no critical vulnerabilities)</li>
+<li>[ ] OpenAPI documentation generated</li>
+<li>[ ] Environment variables documented in <code>.env.example</code></li>
+<li>[ ] Secrets stored in GCP Secret Manager</li>
+<li>[ ] Audit logging implemented for critical operations</li>
+<li>[ ] RBAC checks in place for protected endpoints</li>
+<li>[ ] Database migrations tested (up and down)</li>
+<li>[ ] Performance tested (load testing for high-volume endpoints)</li>
+<li>[ ] Monitoring dashboards updated</li>
+<li>[ ] Runbook updated for ops team</li>
+</ul>
+<hr />
+<h2 id="common-patterns-anti-patterns">Common Patterns &amp; Anti-Patterns</h2>
+<h3 id="patterns">Patterns ✅</h3>
+<p><strong>Multi-Tenant Isolation:</strong></p>
+<pre><code class="language-python"># Always scope queries to tenant
+async def get_resources(tenant_id: str):
+    return await db.execute(
+        text(f&quot;SELECT * FROM {tenant_id}.resources&quot;)
+    )
+</code></pre>
+<p><strong>Correlation IDs:</strong></p>
+<pre><code class="language-python">import uuid
+
+correlation_id = str(uuid.uuid4())
+logger.info(&quot;request.start&quot;, correlation_id=correlation_id)
+# Pass correlation_id through all service calls
+</code></pre>
+<p><strong>Circuit Breaker Pattern:</strong></p>
+<pre><code class="language-python">from circuitbreaker import circuit
+
+@circuit(failure_threshold=5, recovery_timeout=60)
+async def call_external_api():
+    # External API call
+    pass
+</code></pre>
+<h3 id="anti-patterns">Anti-Patterns ❌</h3>
+<p><strong>Global State:</strong></p>
+<pre><code class="language-python"># WRONG: Mutable global state
+current_user = None
+
+# CORRECT: Dependency injection
+def get_current_user(token: str = Depends(oauth2_scheme)):
+    pass
+</code></pre>
+<p><strong>Blocking I/O:</strong></p>
+<pre><code class="language-python"># WRONG: Blocking file read
+with open('file.txt') as f:
+    data = f.read()
+
+# CORRECT: Async I/O
+import aiofiles
+async with aiofiles.open('file.txt') as f:
+    data = await f.read()
+</code></pre>
+<p><strong>Hardcoded Configuration:</strong></p>
+<pre><code class="language-python"># WRONG
+DATABASE_URL = &quot;postgresql://localhost/cortx&quot;
+
+# CORRECT
+DATABASE_URL = os.getenv(&quot;DATABASE_URL&quot;)
+</code></pre>
+<hr />
+<h2 id="continuous-improvement">Continuous Improvement</h2>
+<h3 id="feedback-loop">Feedback Loop</h3>
+<ul>
+<li>Monitor AI-generated code quality metrics</li>
+<li>Track bugs originating from AI-generated code</li>
+<li>Regularly update prompts based on common issues</li>
+<li>Maintain library of high-quality examples</li>
+</ul>
+<h3 id="knowledge-base-updates">Knowledge Base Updates</h3>
+<ul>
+<li>Update RAG vector store when:</li>
+<li>New compliance rules published</li>
+<li>Platform APIs change</li>
+<li>New patterns established</li>
+<li>Security vulnerabilities discovered</li>
+</ul>
+<h3 id="version-control">Version Control</h3>
+<ul>
+<li>Tag all AI-generated code with agent role</li>
+<li>Include reasoning in commit messages</li>
+<li>Link to relevant ADRs and documentation</li>
+<li>Review AI suggestions before committing</li>
+</ul>
+<hr />
+<h2 id="enforcement">Enforcement</h2>
+<p><strong>All pull requests must:</strong>
+1. Pass automated CI/CD checks
+2. Meet code coverage requirements
+3. Include tests for new functionality
+4. Pass security scanning
+5. Be reviewed by human developer
+6. Follow these AI development rules</p>
+<p><strong>Violations will result in:</strong>
+- PR rejection
+- Required remediation
+- Agent prompt refinement
+- Documentation updates</p>
+<hr />
+<h2 id="contact-support">Contact &amp; Support</h2>
+<p><strong>Questions about these rules?</strong>
+- Platform Architecture Team: architecture@sinergysolutions.ai
+- Security Officer: security@sinergysolutions.ai
+- Slack: #ai-development-guidelines</p>
+<p><strong>Propose changes:</strong>
+- Create GitHub issue in <code>sinergysolutionsllc</code> org
+- Tag with <code>ai-governance</code>
+- Request review from architecture team</p>
+<hr />
+<p><strong>Document Control</strong>
+- <strong>Version:</strong> 1.0.0
+- <strong>Last Updated:</strong> 2025-10-01
+- <strong>Review Cycle:</strong> Quarterly
+- <strong>Next Review:</strong> 2026-01-01
+- <strong>Approvers:</strong> Platform Architecture Team</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

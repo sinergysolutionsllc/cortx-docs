@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: svc-ledger API (example)
+  version: 0.1.0
+servers:
+  - url: https://platform.sinergysolutions.ai/ledger
+  - url: http://localhost:8136
+tags:
+  - name: Health
+  - name: Evidence
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Liveness/Readiness
+      responses:
+        '200': { description: OK }
+  /append:
+    post:
+      tags: [Evidence]
+      summary: Append immutable evidence record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppendRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppendResponse'
+  /verify/{entry_id}:
+    get:
+      tags: [Evidence]
+      summary: Verify integrity of an entry
+      parameters:
+        - in: path
+          name: entry_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyResponse'
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  schemas:
+    AppendRequest:
+      type: object
+      properties:
+        action: { type: string, example: "reconcile" }
+        module: { type: string, example: "fedreconcile" }
+        metadata: { type: object, additionalProperties: true }
+        payload_hash: { type: string, description: "SHA-256 hex" }
+      required: [action, payload_hash]
+    AppendResponse:
+      type: object
+      properties:
+        entry_id: { type: string }
+        hash_chain: { type: string }
+        created_at: { type: string, format: date-time }
+      required: [entry_id, hash_chain, created_at]
+    VerifyResponse:
+      type: object
+      properties:
+        entry_id: { type: string }
+        valid: { type: boolean }
+        reason: { type: string, nullable: true }
+      required: [entry_id, valid]

@@ -1,0 +1,52 @@
+site_name: CORTX by Sinergy
+theme:
+  name: material
+nav:
+- Overview: overview/index.md
+- Architecture: architecture/index.md
+- Services:
+  - services/index.md
+  - Gateway:
+    - services/gateway/README.md
+    - OpenAPI (YAML): services/gateway/openapi.yaml
+    - OpenAPI (Redoc): services/gateway/openapi.html
+  - Identity:
+    - services/identity/README.md
+    - OpenAPI (YAML): services/identity/openapi.yaml
+    - OpenAPI (Redoc): services/identity/openapi.html
+  - Validation:
+    - services/validation/README.md
+    - OpenAPI (YAML): services/validation/openapi.yaml
+    - OpenAPI (Redoc): services/validation/openapi.html
+  - AI Broker:
+    - services/ai-broker/README.md
+    - OpenAPI (YAML): services/ai-broker/openapi.yaml
+    - OpenAPI (Redoc): services/ai-broker/openapi.html
+  - Workflow:
+    - services/workflow/README.md
+    - OpenAPI (YAML): services/workflow/openapi.yaml
+    - OpenAPI (Redoc): services/workflow/openapi.html
+  - Compliance:
+    - services/compliance/README.md
+    - OpenAPI (YAML): services/compliance/openapi.yaml
+    - OpenAPI (Redoc): services/compliance/openapi.html
+  - Ledger:
+    - services/ledger/README.md
+    - OpenAPI (YAML): services/ledger/openapi.yaml
+    - OpenAPI (Redoc): services/ledger/openapi.html
+  - OCR:
+    - services/ocr/README.md
+    - OpenAPI (YAML): services/ocr/openapi.yaml
+    - OpenAPI (Redoc): services/ocr/openapi.html
+  - RAG:
+    - services/rag/README.md
+    - OpenAPI (YAML): services/rag/openapi.yaml
+    - OpenAPI (Redoc): services/rag/openapi.html
+- Suites: suites/index.md
+- Packs: packs/index.md
+- SDKs: sdks/index.md
+- Security: security/index.md
+- Operations: operations/index.md
+- Contributing: contribute/index.md
+- ADRs: adrs/index.md
+- RFCs: rfcs/index.md

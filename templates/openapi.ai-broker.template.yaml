@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: svc-ai-broker API (example)
+  version: 0.1.0
+servers:
+  - url: https://platform.sinergysolutions.ai/ai
+  - url: http://localhost:8085
+tags:
+  - name: Health
+  - name: Chat
+  - name: Embeddings
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Liveness/Readiness
+      responses:
+        '200': { description: OK }
+  /chat:
+    post:
+      tags: [Chat]
+      summary: Route chat to approved provider with policy guardrails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Chat response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+  /embed:
+    post:
+      tags: [Embeddings]
+      summary: Generate embeddings with approved provider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbedRequest'
+      responses:
+        '200':
+          description: Embedding vectors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbedResponse'
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  schemas:
+    ChatRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              role: { type: string, enum: ["system","user","assistant"] }
+              content: { type: string }
+        provider_hint: { type: string, enum: ["vertex","openai"], nullable: true }
+        redact_pii: { type: boolean, default: true }
+      required: [messages]
+    ChatResponse:
+      type: object
+      properties:
+        content: { type: string }
+        provider: { type: string }
+        usage: { type: object }
+      required: [content]
+    EmbedRequest:
+      type: object
+      properties:
+        inputs: { type: array, items: { type: string } }
+        model_hint: { type: string, nullable: true }
+      required: [inputs]
+    EmbedResponse:
+      type: object
+      properties:
+        vectors:
+          type: array
+          items:
+            type: array
+            items: { type: number }
+        dim: { type: integer, example: 384 }
+      required: [vectors]

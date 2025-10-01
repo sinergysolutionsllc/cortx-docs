@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: svc-ocr API (example)
+  version: 0.1.0
+servers:
+  - url: https://platform.sinergysolutions.ai/ocr
+  - url: http://localhost:8137
+tags:
+  - name: Health
+  - name: Extraction
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Liveness/Readiness
+      responses:
+        '200': { description: OK }
+  /extract:
+    post:
+      tags: [Extraction]
+      summary: Extract text/fields from a document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractRequest'
+      responses:
+        '200':
+          description: Extraction result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractResponse'
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  schemas:
+    ExtractRequest:
+      type: object
+      properties:
+        source_type: { type: string, enum: [upload, url] }
+        source_uri: { type: string }
+        languages: { type: array, items: { type: string }, example: ["eng"] }
+        features: { type: array, items: { type: string }, example: ["text","tables"] }
+      required: [source_type]
+    ExtractResponse:
+      type: object
+      properties:
+        text: { type: string }
+        blocks: { type: array, items: { type: object } }
+        tables: { type: array, items: { type: object } }
+      required: [text]

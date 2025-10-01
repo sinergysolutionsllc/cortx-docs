@@ -1,0 +1,2494 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Platform Development Focus & Priorities - CORTX by Sinergy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#platform-development-focus-priorities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CORTX by Sinergy" class="md-header__button md-logo" aria-label="CORTX by Sinergy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CORTX by Sinergy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Platform Development Focus &amp; Priorities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CORTX by Sinergy" class="md-nav__button md-logo" aria-label="CORTX by Sinergy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CORTX by Sinergy
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gateway
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gateway
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gateway (8080)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Identity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Identity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Identity (8082)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/identity/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation (8083)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/validation/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Broker
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI Broker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Broker (8085)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ai-broker/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Workflow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflow (8130)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/workflow/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Compliance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance (8135)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/compliance/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ledger
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ledger
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger (8136)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ledger/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    OCR
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            OCR
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OCR (8137)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ocr/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            RAG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RAG (8138)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/openapi.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (YAML)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/rag/openapi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI (Redoc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../suites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Suites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../packs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Packs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDKs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-phase-phase-2-q4-2025-q2-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Phase: Phase 2 (Q4 2025 - Q2 2026)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Phase: Phase 2 (Q4 2025 - Q2 2026)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategic-priorities-ranked" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategic Priorities (Ranked)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strategic Priorities (Ranked)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-compliance-security-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Compliance &amp; Security (CRITICAL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-platform-stability-performance-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Platform Stability &amp; Performance (HIGH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ai-model-expansion-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. AI Model Expansion (HIGH)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pack-marketplace-development-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Pack Marketplace Development (MEDIUM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-corpsuite-production-readiness-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. CorpSuite Production Readiness (MEDIUM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cross-suite-orchestration-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Cross-Suite Orchestration (MEDIUM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#areas-to-avoid-de-prioritized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Areas to Avoid (De-Prioritized)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Areas to Avoid (De-Prioritized)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-international-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. International Expansion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mobile-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mobile Applications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-on-premises-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. On-Premises Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-advanced-ai-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Advanced AI Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-blockchaindistributed-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Blockchain/Distributed Ledger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-making-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision-Making Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision-Making Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-do-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Priority (Do Now)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Priority (Schedule)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority-backlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low Priority (Backlog)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-not-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defer (Not Now)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Gates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quality Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Deploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Channels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-standup-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Standup (Async)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weekly Planning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sprint-retrospective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint Retrospective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics-q4-2025-q2-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics (Q4 2025 - Q2 2026)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics (Q4 2025 - Q2 2026)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quarterly-review-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarterly Review Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-ai-agents-should-use-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      How AI Agents Should Use This Document
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How AI Agents Should Use This Document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-generating-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Generating Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Uncertain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Maintenance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="platform-development-focus-priorities">Platform Development Focus &amp; Priorities</h1>
+<p><strong>Version:</strong> 1.0.0
+<strong>Last Updated:</strong> 2025-10-01
+<strong>Owner:</strong> Executive Leadership &amp; Product Team
+<strong>Classification:</strong> Internal</p>
+<hr />
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the current strategic priorities, constraints, and focus areas for the CORTX Platform development. It serves as a guidepost for AI-assisted development, ensuring that all code generation and architectural decisions align with business objectives and resource constraints.</p>
+<hr />
+<h2 id="current-phase-phase-2-q4-2025-q2-2026">Current Phase: Phase 2 (Q4 2025 - Q2 2026)</h2>
+<h3 id="phase-overview">Phase Overview</h3>
+<p><strong>Status:</strong> Active Development
+<strong>Timeline:</strong> October 2025 - June 2026
+<strong>Primary Goal:</strong> Achieve production readiness for multi-tenant SaaS platform with FedRAMP/HIPAA compliance</p>
+<p><strong>Key Milestones:</strong>
+- Q4 2025: AI model expansion, BPM Designer RAG enhancements
+- Q1 2026: HIPAA 3rd party audit completion, CorpSuite PropVerify production
+- Q2 2026: Pack Marketplace MVP, SOC 2 Type II audit</p>
+<hr />
+<h2 id="strategic-priorities-ranked">Strategic Priorities (Ranked)</h2>
+<h3 id="1-compliance-security-critical">1. Compliance &amp; Security (CRITICAL)</h3>
+<p><strong>Priority Level:</strong> P0
+<strong>Rationale:</strong> Required for enterprise sales and government contracts</p>
+<p><strong>Focus Areas:</strong>
+- Complete HIPAA 3rd party audit (Q1 2026 deadline)
+- Achieve 175/325 NIST 800-53 controls (Phase I FedRAMP)
+- SOC 2 Type II readiness (audit scheduled Q2 2026)
+- Continuous compliance monitoring automation</p>
+<p><strong>Active Work:</strong>
+- Implementing remaining HIPAA safeguards (SI-3, SI-4, SI-7)
+- Penetration testing preparation (scheduled Q1 2026)
+- Evidence collection automation for compliance reports
+- Audit trail immutability verification</p>
+<p><strong>Constraints:</strong>
+- No shortcuts on security controls
+- All compliance work must be documented
+- Evidence collection is mandatory for every control
+- Security changes require architecture review</p>
+<p><strong>AI Development Guidance:</strong>
+- Always implement audit logging for critical operations
+- Include compliance tags in all generated code
+- Follow NIST 800-53 control requirements
+- Generate evidence artifacts automatically</p>
+<hr />
+<h3 id="2-platform-stability-performance-high">2. Platform Stability &amp; Performance (HIGH)</h3>
+<p><strong>Priority Level:</strong> P1
+<strong>Rationale:</strong> Production reliability is essential for customer trust</p>
+<p><strong>Focus Areas:</strong>
+- Achieve 99.9% uptime SLA
+- Reduce API latency (p99 &lt;500ms target)
+- Improve test coverage from 78% to &gt;85%
+- Eliminate critical bugs in production</p>
+<p><strong>Active Work:</strong>
+- Load testing for high-volume workflows (1M+ records)
+- Database query optimization (indexing, connection pooling)
+- Circuit breaker implementation for external services
+- Comprehensive error handling and recovery</p>
+<p><strong>Constraints:</strong>
+- No breaking API changes without migration path
+- All changes require backwards compatibility
+- Performance regression tests required
+- Monitoring dashboards must be updated</p>
+<p><strong>AI Development Guidance:</strong>
+- Generate performance tests for high-volume operations
+- Include proper error handling and retries
+- Use async/await for I/O-bound operations
+- Implement connection pooling and caching</p>
+<hr />
+<h3 id="3-ai-model-expansion-high">3. AI Model Expansion (HIGH)</h3>
+<p><strong>Priority Level:</strong> P1
+<strong>Rationale:</strong> Multi-model support reduces vendor lock-in and improves quality</p>
+<p><strong>Focus Areas:</strong>
+- Integrate Claude 3.5 Sonnet for code generation
+- Add GPT-4 Turbo for complex reasoning
+- Implement AWS Bedrock for enterprise customers
+- Enhance RAG with compliance knowledge base</p>
+<p><strong>Active Work:</strong>
+- Model router implementation (cost/latency/compliance optimization)
+- PII redaction before all LLM calls
+- RAG vector store updates with Treasury/HIPAA documents
+- Prompt template management system</p>
+<p><strong>Constraints:</strong>
+- PII must be redacted before LLM processing
+- Model costs must be tracked per tenant
+- Fallback models required for high availability
+- Compliance approval needed for new models</p>
+<p><strong>AI Development Guidance:</strong>
+- Abstract model selection behind router interface
+- Implement graceful degradation if primary model fails
+- Log all LLM calls with prompt hashes
+- Cache common responses to reduce costs</p>
+<hr />
+<h3 id="4-pack-marketplace-development-medium">4. Pack Marketplace Development (MEDIUM)</h3>
+<p><strong>Priority Level:</strong> P2
+<strong>Rationale:</strong> Ecosystem growth drives network effects and revenue</p>
+<p><strong>Focus Areas:</strong>
+- Launch Pack Marketplace MVP (Q2 2026)
+- Implement certification process (3 tiers: Official, Certified, Community)
+- Define revenue model (70/30 split for certified packs)
+- Build discovery and recommendation engine</p>
+<p><strong>Active Work:</strong>
+- Pack versioning and dependency management
+- Certification workflow (review → compliance → testing → approval)
+- Marketplace UI/UX design
+- Revenue tracking and payout automation</p>
+<p><strong>Constraints:</strong>
+- Official packs must be free (government funded)
+- Certification requires thorough testing
+- No breaking changes to pack schemas
+- License compatibility verification required</p>
+<p><strong>AI Development Guidance:</strong>
+- Generate pack templates for common use cases
+- Create validation tools for pack authoring
+- Build recommendation system based on tenant context
+- Automate certification test generation</p>
+<hr />
+<h3 id="5-corpsuite-production-readiness-medium">5. CorpSuite Production Readiness (MEDIUM)</h3>
+<p><strong>Priority Level:</strong> P2
+<strong>Rationale:</strong> Diversify revenue beyond federal customers</p>
+<p><strong>Focus Areas:</strong>
+- PropVerify title verification production launch
+- Maryland SDAT integration (AUP compliance)
+- Greenlight opportunity analysis module
+- InvestMait investment tracking</p>
+<p><strong>Active Work:</strong>
+- SDAT data licensing and access controls
+- Human-in-the-loop approval for sensitive data
+- PropVerify UI/UX refinement
+- Performance optimization for bulk property searches</p>
+<p><strong>Constraints:</strong>
+- SDAT AUP restrictions (no automated scraping)
+- Human verification required for critical decisions
+- Rate limiting to respect SDAT terms
+- Privacy controls for property owner data</p>
+<p><strong>AI Development Guidance:</strong>
+- Implement SDAT API integration with rate limiting
+- Generate approval workflows for sensitive operations
+- Create property validation RulePacks
+- Build AI-assisted property analysis tools</p>
+<hr />
+<h3 id="6-cross-suite-orchestration-medium">6. Cross-Suite Orchestration (MEDIUM)</h3>
+<p><strong>Priority Level:</strong> P2
+<strong>Rationale:</strong> Enable complex workflows spanning multiple suites</p>
+<p><strong>Focus Areas:</strong>
+- Implement saga pattern for distributed transactions
+- Event-driven architecture (Redis → Kafka migration)
+- Cross-suite data sharing with tenant isolation
+- Workflow orchestration improvements</p>
+<p><strong>Active Work:</strong>
+- Saga coordinator service design
+- Event schema registry
+- Compensation logic for failed transactions
+- Cross-suite integration testing</p>
+<p><strong>Constraints:</strong>
+- Maintain tenant isolation across suites
+- Ensure ACID properties for critical workflows
+- No tight coupling between suites
+- Event versioning for backwards compatibility</p>
+<p><strong>AI Development Guidance:</strong>
+- Generate saga workflows with compensation logic
+- Implement event handlers with idempotency
+- Create cross-suite integration tests
+- Build workflow visualization tools</p>
+<hr />
+<h2 id="current-constraints">Current Constraints</h2>
+<h3 id="technical-constraints">Technical Constraints</h3>
+<p><strong>Infrastructure:</strong>
+- GCP Cloud Run is primary deployment target
+- PostgreSQL for persistence (Supabase managed)
+- Redis for event bus (planned Kafka migration in Phase 3)
+- Cloud Storage for artifacts
+- Terraform for all infrastructure changes</p>
+<p><strong>Technology Stack:</strong>
+- Python 3.11+ for backend services (FastAPI)
+- TypeScript/Next.js 14 for frontend
+- Node 20+ for TypeScript projects
+- pnpm for package management</p>
+<p><strong>Compliance Requirements:</strong>
+- FedRAMP Phase I (175 controls) by Q4 2026
+- HIPAA audit Q1 2026
+- SOC 2 Type II audit Q2 2026
+- NIST 800-53 Rev 5 continuous compliance</p>
+<h3 id="resource-constraints">Resource Constraints</h3>
+<p><strong>Team Size:</strong>
+- 3 full-time engineers
+- 1 compliance officer (part-time)
+- 1 product manager (part-time)
+- AI-assisted development for velocity</p>
+<p><strong>Budget:</strong>
+- Cloud spend limit: $5k/month
+- AI model costs: $1k/month
+- Third-party audits: $50k budgeted
+- Infrastructure as priority investment</p>
+<p><strong>Time Constraints:</strong>
+- HIPAA audit deadline: Q1 2026 (non-negotiable)
+- SOC 2 audit: Q2 2026 (scheduled)
+- FedRAMP ATO target: Q4 2026 (aggressive)</p>
+<h3 id="business-constraints">Business Constraints</h3>
+<p><strong>Customer Commitments:</strong>
+- FedSuite production uptime: 99.9%
+- GTAS reconciliation accuracy: 100%
+- Support SLA: 4-hour response for P1 issues</p>
+<p><strong>Regulatory Requirements:</strong>
+- No PII in LLM training data
+- 7-year audit log retention
+- Right to deletion (GDPR compliance)
+- Data residency (US-only for government)</p>
+<hr />
+<h2 id="areas-to-avoid-de-prioritized">Areas to Avoid (De-Prioritized)</h2>
+<h3 id="1-international-expansion">1. International Expansion</h3>
+<p><strong>Status:</strong> Phase 4 (2027+)
+<strong>Reason:</strong> Focus on US market, regulatory complexity</p>
+<p><strong>Do Not:</strong>
+- Build multi-language support
+- Implement GDPR-specific features beyond basics
+- Create region-specific compliance packs
+- Plan for international data residency</p>
+<h3 id="2-mobile-applications">2. Mobile Applications</h3>
+<p><strong>Status:</strong> Not on roadmap
+<strong>Reason:</strong> Web-first approach, limited resources</p>
+<p><strong>Do Not:</strong>
+- Create native iOS/Android apps
+- Build mobile-specific APIs
+- Optimize for mobile UI/UX
+- Invest in mobile testing infrastructure</p>
+<h3 id="3-on-premises-deployment">3. On-Premises Deployment</h3>
+<p><strong>Status:</strong> Phase 4 (2027+), enterprise-only
+<strong>Reason:</strong> SaaS-first model, complexity</p>
+<p><strong>Do Not:</strong>
+- Build on-prem installation tools
+- Create air-gapped deployment options
+- Support legacy infrastructure
+- Invest in on-prem documentation (yet)</p>
+<h3 id="4-advanced-ai-features">4. Advanced AI Features</h3>
+<p><strong>Status:</strong> Phase 3+
+<strong>Reason:</strong> Core capabilities first</p>
+<p><strong>Do Not:</strong>
+- Fine-tune custom LLMs
+- Build AI model training pipelines
+- Implement reinforcement learning
+- Create AI explainability dashboards (advanced)</p>
+<h3 id="5-blockchaindistributed-ledger">5. Blockchain/Distributed Ledger</h3>
+<p><strong>Status:</strong> Research phase only
+<strong>Reason:</strong> Regulatory uncertainty, complexity</p>
+<p><strong>Do Not:</strong>
+- Implement blockchain audit trails
+- Create cryptocurrency payment options
+- Build distributed consensus mechanisms
+- Invest in blockchain infrastructure</p>
+<hr />
+<h2 id="decision-making-framework">Decision-Making Framework</h2>
+<p>When prioritizing new features or technical debt:</p>
+<h3 id="high-priority-do-now">High Priority (Do Now)</h3>
+<ul>
+<li>Critical security vulnerabilities</li>
+<li>Compliance blockers (HIPAA, FedRAMP, SOC 2)</li>
+<li>Production outages or data loss risks</li>
+<li>Customer-impacting bugs (P0/P1)</li>
+</ul>
+<h3 id="medium-priority-schedule">Medium Priority (Schedule)</h3>
+<ul>
+<li>Performance improvements with measurable impact</li>
+<li>Technical debt reducing development velocity</li>
+<li>Features with committed customer contracts</li>
+<li>Scalability improvements for known limits</li>
+</ul>
+<h3 id="low-priority-backlog">Low Priority (Backlog)</h3>
+<ul>
+<li>Nice-to-have features without customer demand</li>
+<li>Speculative optimizations</li>
+<li>Aesthetic improvements without UX impact</li>
+<li>Experimental technologies without clear ROI</li>
+</ul>
+<h3 id="defer-not-now">Defer (Not Now)</h3>
+<ul>
+<li>International expansion features</li>
+<li>Mobile applications</li>
+<li>On-premises deployment (non-enterprise)</li>
+<li>Unproven AI techniques</li>
+</ul>
+<hr />
+<h2 id="quality-gates">Quality Gates</h2>
+<p>All code (AI-generated or human-written) must meet:</p>
+<h3 id="pre-commit">Pre-Commit</h3>
+<ul>
+<li>[ ] Linting passes (ruff for Python, eslint for TypeScript)</li>
+<li>[ ] Type checking passes (mypy, TypeScript strict)</li>
+<li>[ ] Unit tests written for new code</li>
+<li>[ ] Test coverage &gt;80% for modified files</li>
+</ul>
+<h3 id="pre-merge">Pre-Merge</h3>
+<ul>
+<li>[ ] All tests pass in CI/CD</li>
+<li>[ ] Code review approved by human developer</li>
+<li>[ ] Security scan passes (Snyk, Trivy)</li>
+<li>[ ] OpenAPI documentation updated (if API changes)</li>
+<li>[ ] No new critical or high-severity vulnerabilities</li>
+</ul>
+<h3 id="pre-deploy">Pre-Deploy</h3>
+<ul>
+<li>[ ] Integration tests pass</li>
+<li>[ ] Load testing completed (for high-volume features)</li>
+<li>[ ] Monitoring dashboards updated</li>
+<li>[ ] Runbook updated for ops team</li>
+<li>[ ] Feature flags configured (if applicable)</li>
+<li>[ ] Rollback plan documented</li>
+</ul>
+<hr />
+<h2 id="communication-channels">Communication Channels</h2>
+<h3 id="daily-standup-async">Daily Standup (Async)</h3>
+<ul>
+<li><strong>When:</strong> 9 AM ET daily</li>
+<li><strong>Where:</strong> Slack #platform-daily</li>
+<li><strong>Format:</strong> What I did, what I'm doing, blockers</li>
+</ul>
+<h3 id="weekly-planning">Weekly Planning</h3>
+<ul>
+<li><strong>When:</strong> Monday 10 AM ET</li>
+<li><strong>Where:</strong> Google Meet</li>
+<li><strong>Format:</strong> Review priorities, assign work, address blockers</li>
+</ul>
+<h3 id="sprint-retrospective">Sprint Retrospective</h3>
+<ul>
+<li><strong>When:</strong> Every 2 weeks (Friday)</li>
+<li><strong>Where:</strong> Google Meet</li>
+<li><strong>Format:</strong> What went well, what to improve, action items</li>
+</ul>
+<h3 id="architecture-review">Architecture Review</h3>
+<ul>
+<li><strong>When:</strong> As needed (scheduled ad-hoc)</li>
+<li><strong>Where:</strong> Google Meet + ADR documentation</li>
+<li><strong>Format:</strong> Present proposal, discuss tradeoffs, document decision</li>
+</ul>
+<hr />
+<h2 id="success-metrics-q4-2025-q2-2026">Success Metrics (Q4 2025 - Q2 2026)</h2>
+<h3 id="compliance">Compliance</h3>
+<ul>
+<li>[ ] HIPAA audit completed with no major findings (Q1 2026)</li>
+<li>[ ] 175/325 NIST 800-53 controls implemented and evidenced</li>
+<li>[ ] SOC 2 Type II audit initiated (Q2 2026)</li>
+<li>[ ] Zero compliance-related security incidents</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>[ ] 99.9% uptime (monthly)</li>
+<li>[ ] API p99 latency &lt;500ms</li>
+<li>[ ] Pack execution: 1M records in &lt;30 seconds</li>
+<li>[ ] Test coverage &gt;85%</li>
+</ul>
+<h3 id="product">Product</h3>
+<ul>
+<li>[ ] Pack Marketplace MVP launched (Q2 2026)</li>
+<li>[ ] 3+ AI models integrated (Gemini, Claude, GPT-4)</li>
+<li>[ ] CorpSuite PropVerify in production</li>
+<li>[ ] 50+ certified RulePacks/WorkflowPacks</li>
+</ul>
+<h3 id="business">Business</h3>
+<ul>
+<li>[ ] 50 total tenants (up from 12)</li>
+<li>[ ] 75% customer retention rate</li>
+<li>[ ] 4-hour P1 support SLA maintained</li>
+<li>[ ] $500k ARR (annual recurring revenue)</li>
+</ul>
+<hr />
+<h2 id="quarterly-review-process">Quarterly Review Process</h2>
+<p><strong>Schedule:</strong> Last week of each quarter
+<strong>Participants:</strong> Executive team, product manager, tech lead
+<strong>Agenda:</strong>
+1. Review progress against success metrics
+2. Assess strategic priorities (re-rank if needed)
+3. Identify new constraints or blockers
+4. Update focus areas for next quarter
+5. Document decisions in this file</p>
+<p><strong>Next Review:</strong> December 30, 2025</p>
+<hr />
+<h2 id="how-ai-agents-should-use-this-document">How AI Agents Should Use This Document</h2>
+<h3 id="before-generating-code">Before Generating Code</h3>
+<ol>
+<li>Check if the feature aligns with current priorities (1-6)</li>
+<li>Verify it doesn't conflict with constraints</li>
+<li>Ensure it's not in the "avoid" list</li>
+<li>Confirm compliance requirements are understood</li>
+</ol>
+<h3 id="during-development">During Development</h3>
+<ol>
+<li>Reference success metrics for quality targets</li>
+<li>Apply appropriate quality gates</li>
+<li>Consider resource constraints (cost, time, team)</li>
+<li>Follow decision-making framework for tradeoffs</li>
+</ol>
+<h3 id="when-uncertain">When Uncertain</h3>
+<ol>
+<li>Propose solution with rationale</li>
+<li>Highlight potential conflicts with priorities</li>
+<li>Suggest alternatives if constraints violated</li>
+<li>Request human review for strategic decisions</li>
+</ol>
+<hr />
+<h2 id="document-maintenance">Document Maintenance</h2>
+<p><strong>Update Frequency:</strong> Monthly or when priorities shift
+<strong>Owner:</strong> Product Manager + Tech Lead
+<strong>Review:</strong> All engineers + stakeholders</p>
+<p><strong>Change Log:</strong>
+- 2025-10-01: Initial version for Phase 2
+- (Future updates will be logged here)</p>
+<hr />
+<h2 id="contact">Contact</h2>
+<p><strong>Questions about priorities:</strong>
+- Product Manager: product@sinergysolutions.ai
+- Tech Lead: tech-lead@sinergysolutions.ai</p>
+<p><strong>Propose priority changes:</strong>
+- Create GitHub issue with <code>priority-change</code> label
+- Include business justification and impact analysis
+- Tag product manager for review</p>
+<hr />
+<p><strong>Document Control</strong>
+- <strong>Version:</strong> 1.0.0
+- <strong>Last Updated:</strong> 2025-10-01
+- <strong>Next Review:</strong> 2025-11-01
+- <strong>Approvers:</strong> Executive Leadership Team</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

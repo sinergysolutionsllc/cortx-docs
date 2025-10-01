@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: svc-rag API (example)
+  version: 0.1.0
+  description: >
+    Example OpenAPI for a CORTX Platform service following contracts-first rules.
+    Concrete (no placeholders) so it can be copy-adapted.
+
+servers:
+  - url: https://platform.sinergysolutions.ai/rag
+    description: Production
+  - url: https://staging.platform.sinergysolutions.ai/rag
+    description: Staging
+  - url: http://localhost:8138
+    description: Local Dev
+
+tags:
+  - name: Health
+  - name: Ingestion
+  - name: Query
+
+security:
+  - bearerAuth: []
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Liveness/Readiness
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+
+  /ingest:
+    post:
+      tags: [Ingestion]
+      summary: Ingest a document or URL into hierarchical vector store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngestRequest'
+      responses:
+        '202':
+          description: Accepted for async processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestAccepted'
+
+  /query:
+    post:
+      tags: [Query]
+      summary: Perform hierarchical RAG retrieval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Retrieval results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status: { type: string, enum: [ok] }
+        service: { type: string, example: "svc-rag" }
+        time: { type: string, format: date-time }
+      required: [status, service, time]
+
+    IngestRequest:
+      type: object
+      properties:
+        level:
+          type: string
+          enum: [platform, suite, module, entity]
+        suite_id:
+          type: string
+          nullable: true
+        module_id:
+          type: string
+          nullable: true
+        entity_id:
+          type: string
+          nullable: true
+        source_type:
+          type: string
+          enum: [upload, url, api]
+        source_uri:
+          type: string
+          description: URL or reference to uploaded object
+        metadata:
+          type: object
+          additionalProperties: true
+      required: [level, source_type]
+      example:
+        level: module
+        suite_id: fedsuite
+        module_id: fedtransform
+        source_type: url
+        source_uri: "https://omb.gov/circulars/a-136.pdf"
+        metadata: { tags: ["policy","federal"] }
+
+    IngestAccepted:
+      type: object
+      properties:
+        job_id: { type: string }
+        status: { type: string, enum: [queued] }
+      required: [job_id, status]
+
+    QueryRequest:
+      type: object
+      properties:
+        query: { type: string }
+        suite_id: { type: string, nullable: true }
+        module_id: { type: string, nullable: true }
+        entity_id: { type: string, nullable: true }
+        top_k: { type: integer, minimum: 1, maximum: 50, default: 15 }
+        include_levels:
+          type: array
+          items:
+            type: string
+            enum: [platform, suite, module, entity]
+      required: [query]
+      example:
+        query: "Map Oracle GL_BALANCES to GTAS Line 1000"
+        suite_id: fedsuite
+        module_id: fedtransform
+        top_k: 15
+        include_levels: [module, suite, entity, platform]
+
+    QueryResponse:
+      type: object
+      properties:
+        hits:
+          type: array
+          items:
+            type: object
+            properties:
+              level: { type: string }
+              score: { type: number }
+              chunk: { type: string }
+              source_uri: { type: string }
+              metadata: { type: object, additionalProperties: true }
+        usage:
+          type: object
+          properties:
+            duration_ms: { type: integer }
+            chunks_examined: { type: integer }
+      required: [hits]

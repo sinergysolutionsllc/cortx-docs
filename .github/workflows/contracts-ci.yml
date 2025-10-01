@@ -1,0 +1,35 @@
+name: contracts-ci
+on:
+  pull_request:
+    paths:
+      - 'services/**/openapi.yaml'
+      - 'schemas/**'
+      - '.github/workflows/contracts-ci.yml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'services/**/openapi.yaml'
+      - 'schemas/**'
+
+jobs:
+  validate-specs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate OpenAPI files exist
+        run: |
+          echo "Validating OpenAPI presence..."
+          find services -name openapi.yaml | grep -q . || (echo "No OpenAPI files found" && exit 1)
+      # Optional: add openapi-cli or spectral later for linting
+      - name: Report files
+        run: |
+          find services -name openapi.yaml -print
+
+  lint-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Redocly CLI
+        run: npm i -g @redocly/cli
+      - name: Lint OpenAPI
+        run: redocly lint "services/**/openapi.yaml"

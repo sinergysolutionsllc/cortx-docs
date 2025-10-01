@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AI Broker Embed Request (example)",
+    "type": "object",
+    "properties": {
+      "inputs": { "type": "array", "items": { "type": "string" } },
+      "model_hint": { "type": "string" }
+    },
+    "required": ["inputs"],
+    "additionalProperties": false,
+    "examples": [{
+      "inputs": ["OMB A-136 requires ...", "GTAS Line 1000 definition ..."],
+      "model_hint": "text-embedding-3-small"
+    }]
+  }

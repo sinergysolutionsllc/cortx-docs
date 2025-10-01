@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ledger Append Request (example)",
+    "type": "object",
+    "properties": {
+      "action": { "type": "string" },
+      "module": { "type": "string" },
+      "metadata": { "type": "object", "additionalProperties": true },
+      "payload_hash": { "type": "string", "description": "SHA-256 hex" }
+    },
+    "required": ["action", "payload_hash"],
+    "additionalProperties": false,
+    "examples": [{
+      "action": "reconcile",
+      "module": "fedreconcile",
+      "payload_hash": "37c4b87edffc5d198ff5a185cee7ee09",
+      "metadata": { "gtas_period": "FY25-P12" }
+    }]
+  }
