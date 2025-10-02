@@ -19,15 +19,15 @@ declare -A REPOS=(
 # PATHS[gateway]="openapi.yaml"
 # PATHS[identity]="api/openapi.yaml"
 declare -A PATHS=(
-  # [gateway]="openapi.yaml"
-  # [identity]="api/openapi.yaml"
-  # [validation]="services/validation/openapi.yaml"
-  # [ai-broker]="openapi/openapi.yml"
-  # [workflow]="specs/openapi.yaml"
-  # [compliance]="specs/openapi.yaml"
-  # [ledger]="openapi.yaml"
-  # [ocr]="api/openapi.yaml"
-  # [rag]="openapi.yaml"
+  [gateway]="openapi.yaml"
+  [identity]="api/openapi.yaml"
+  [validation]="services/validation/openapi.yaml"
+  [ai-broker]="openapi/openapi.yml"
+  [workflow]="specs/openapi.yaml"
+  [compliance]="specs/openapi.yaml"
+  [ledger]="openapi.yaml"
+  [ocr]="api/openapi.yaml"
+  [rag]="openapi.yaml"
 )
 
 # --- Begin -------------------------------------------------------------------

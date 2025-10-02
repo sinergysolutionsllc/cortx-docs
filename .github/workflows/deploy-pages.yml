@@ -9,6 +9,8 @@ on:
       - 'requirements.txt'
       - 'scripts/**'
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
 
 permissions:
   contents: read
