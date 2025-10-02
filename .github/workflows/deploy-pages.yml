@@ -3,6 +3,11 @@ name: deploy-pages
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+      - 'scripts/**'
   workflow_dispatch:
 
 permissions:
@@ -50,4 +55,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

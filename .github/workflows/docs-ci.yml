@@ -4,12 +4,16 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
+      - 'scripts/**'
       - '.github/workflows/docs-ci.yml'
   push:
     branches: [ main ]
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
+      - 'scripts/**'
 
 jobs:
   build-docs:
@@ -30,4 +34,3 @@ jobs:
       - name: Build docs (strict)
         run: |
           mkdocs build --strict
-

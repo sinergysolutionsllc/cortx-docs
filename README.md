@@ -1,5 +1,9 @@
 # CORTX by Sinergy
 
+[![Docs Deploy](https://github.com/sinergysolutionsllc/cortx-docs/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/sinergysolutionsllc/cortx-docs/actions/workflows/deploy-pages.yml)
+[![Docs CI](https://github.com/sinergysolutionsllc/cortx-docs/actions/workflows/docs-ci.yml/badge.svg)](https://github.com/sinergysolutionsllc/cortx-docs/actions/workflows/docs-ci.yml)
+[![Live Docs](https://img.shields.io/badge/docs-live-blue)](https://sinergysolutionsllc.github.io/cortx-docs/)
+
 **CORTX** is the AI orchestration and compliance platform powering all Sinergy Solutions product suites. It is **ERP-agnostic, compliance-first, and modular**, serving as the intelligence layer that ingests data, validates against rules, orchestrates workflows, and enables Retrieval-Augmented Generation (RAG) with explainable AI.
 
 ---
@@ -79,12 +83,16 @@ See [CORTX_PLATFORM_FDD.md](./CORTX_PLATFORM_FDD.md) for deployment details.
 
 ### Local Development
 ```bash
-# Clone repo
-git clone https://github.com/sinergysolutionsllc/cortx.git
-cd cortx
+# Clone docs portal
+git clone https://github.com/sinergysolutionsllc/cortx-docs.git
+cd cortx-docs
 
-# Start services
-docker-compose up
+# Sync latest OpenAPI specs from service repos (requires access)
+bash scripts/sync_openapi.sh
+
+# Build docs locally (strict)
+pip install -r requirements.txt
+mkdocs build --strict
 
 # Run backend tests
 pytest
