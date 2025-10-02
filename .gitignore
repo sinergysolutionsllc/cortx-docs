@@ -17,3 +17,17 @@ htmlcov/
 
 # containers
 *.local.yml
+
+# mkdocs build output
+site/
+
+# embedded project repos (not tracked in docs portal)
+corpsuite/
+cortx-designer/
+cortx-e2e/
+cortx-packs/
+cortx-platform/
+cortx-sdks/
+fedsuite/
+govsuite/
+medsuite/
