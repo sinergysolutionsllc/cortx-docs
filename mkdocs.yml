@@ -2,6 +2,7 @@ site_name: CORTX by Sinergy
 theme:
   name: material
 nav:
+- Home: index.md
 - Overview: overview/index.md
 - Architecture: architecture/index.md
 - Services:
@@ -42,6 +43,16 @@ nav:
     - services/rag/README.md
     - OpenAPI (YAML): services/rag/openapi.yaml
     - OpenAPI (Redoc): services/rag/openapi.html
+- APIs:
+  - Gateway API: apis/gateway.md
+  - Identity API: apis/identity.md
+  - Validation API: apis/validation.md
+  - AI Broker API: apis/ai-broker.md
+  - Workflow API: apis/workflow.md
+  - Compliance API: apis/compliance.md
+  - Ledger API: apis/ledger.md
+  - OCR API: apis/ocr.md
+  - RAG API: apis/rag.md
 - Suites: suites/index.md
 - Packs: packs/index.md
 - SDKs: sdks/index.md

@@ -1,0 +1,4 @@
+mkdocs>=1.5
+mkdocs-material
+mkdocs-redoc
+mkdocstrings
