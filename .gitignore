@@ -31,3 +31,10 @@ cortx-sdks/
 fedsuite/
 govsuite/
 medsuite/
+
+# Environment
+.env
+
+# Cloned repos for local development
+repos/
+

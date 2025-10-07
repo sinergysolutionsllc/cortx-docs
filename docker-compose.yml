@@ -1,0 +1,253 @@
+version: '3.8'
+
+services:
+  # Shared Infrastructure
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: cortx-postgres
+    environment:
+      POSTGRES_DB: cortx
+      POSTGRES_USER: cortx
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cortx_dev_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cortx"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: cortx-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Platform Services
+  gateway:
+    build:
+      context: ./repos/gateway
+      dockerfile: Dockerfile
+    container_name: cortx-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - REDIS_URL=redis://redis:6379
+      - REQUIRE_AUTH=${REQUIRE_AUTH:-false}
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  identity:
+    build:
+      context: ./repos/identity
+      dockerfile: Dockerfile
+    container_name: cortx-identity
+    ports:
+      - "8082:8082"
+    environment:
+      - PORT=8082
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-dev_secret_key_change_in_prod}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  validation:
+    build:
+      context: ./repos/validation
+      dockerfile: Dockerfile
+    container_name: cortx-validation
+    ports:
+      - "8083:8083"
+    environment:
+      - PORT=8083
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+    depends_on:
+      postgres:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  ai-broker:
+    build:
+      context: ./repos/ai-broker
+      dockerfile: Dockerfile
+    container_name: cortx-ai-broker
+    ports:
+      - "8085:8085"
+    environment:
+      - PORT=8085
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - VERTEX_PROJECT_ID=${VERTEX_PROJECT_ID}
+      - VERTEX_LOCATION=${VERTEX_LOCATION:-us-central1}
+    depends_on:
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  workflow:
+    build:
+      context: ./repos/workflow
+      dockerfile: Dockerfile
+    container_name: cortx-workflow
+    ports:
+      - "8130:8130"
+    environment:
+      - PORT=8130
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8130/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  compliance:
+    build:
+      context: ./repos/compliance
+      dockerfile: Dockerfile
+    container_name: cortx-compliance
+    ports:
+      - "8135:8135"
+    environment:
+      - PORT=8135
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+    depends_on:
+      postgres:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8135/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  ledger:
+    build:
+      context: ./repos/ledger
+      dockerfile: Dockerfile
+    container_name: cortx-ledger
+    ports:
+      - "8136:8136"
+    environment:
+      - PORT=8136
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+    depends_on:
+      postgres:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8136/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  ocr:
+    build:
+      context: ./repos/ocr
+      dockerfile: Dockerfile
+    container_name: cortx-ocr
+    ports:
+      - "8137:8137"
+    environment:
+      - PORT=8137
+      - CORTX_GATEWAY_URL=http://gateway:8080
+    depends_on:
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8137/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  rag:
+    build:
+      context: ./repos/rag
+      dockerfile: Dockerfile
+    container_name: cortx-rag
+    ports:
+      - "8138:8138"
+    environment:
+      - PORT=8138
+      - CORTX_GATEWAY_URL=http://gateway:8080
+      - POSTGRES_URL=postgresql://cortx:${POSTGRES_PASSWORD:-cortx_dev_password}@postgres:5432/cortx
+    depends_on:
+      postgres:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8138/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    name: cortx-network
