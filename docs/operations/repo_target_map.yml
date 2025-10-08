@@ -1,0 +1,423 @@
+# CORTX Repository Target Map
+# Generated: 2025-10-08
+# Purpose: Map current directory structure to target multi-repo architecture per REPO_INSTRUCTION.md
+
+metadata:
+  org: sinergysolutionsllc
+  primary_doc: docs/operations/REPO_INSTRUCTION.md
+  current_repo: cortx-docs
+  execution_date: 2025-10-08
+
+# Individual Service Repositories (9 services)
+services:
+  - name: cortx-gateway
+    source_path: ./services/gateway/
+    destination_repo: cortx-gateway
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Main API gateway with routing and policy enforcement"
+
+  - name: cortx-identity
+    source_path: ./services/identity/
+    destination_repo: cortx-identity
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Auth/authz service with JWT/OIDC and RBAC"
+
+  - name: cortx-validation
+    source_path: ./services/validation/
+    destination_repo: cortx-validation
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - clients/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+      - __pycache__/
+      - htmlcov/
+      - "*.egg-info/"
+    notes: "Schema and rule engine execution"
+
+  - name: cortx-workflow
+    source_path: ./services/workflow/
+    destination_repo: cortx-workflow
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - clients/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Long-running jobs, sagas, compensations"
+
+  - name: cortx-compliance
+    source_path: ./services/compliance/
+    destination_repo: cortx-compliance
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Immutable audit logs, evidence packaging, reporting"
+
+  - name: cortx-ai-broker
+    source_path: ./services/ai-broker/
+    destination_repo: cortx-ai-broker
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "LLM brokering (Vertex, GPT, Claude), prompt library, safety/guardrails"
+
+  - name: cortx-rag
+    source_path: ./services/rag/
+    destination_repo: cortx-rag
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "RAG indexers, ingestion, retrieval contracts"
+
+  - name: cortx-ocr
+    source_path: ./services/ocr/
+    destination_repo: cortx-ocr
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Document parsing (PDF/DOCX), layout extraction"
+
+  - name: cortx-ledger
+    source_path: ./services/ledger/
+    destination_repo: cortx-ledger
+    destination_path: ./
+    split_strategy: git-subtree-split
+    includes:
+      - app/
+      - tests/
+      - openapi.yaml (move to openapi/)
+      - Dockerfile (move to infra/)
+      - requirements.txt
+      - pytest.ini
+      - pyproject.toml
+    excludes:
+      - docs/ (stays in cortx-docs)
+    notes: "Usage metering, token/cost tracking, events for billing"
+
+# Supporting Repositories
+supporting_repos:
+  - name: cortx-docs
+    source_path: ./
+    destination_repo: cortx-docs
+    destination_path: ./
+    split_strategy: cleanup-in-place
+    keeps:
+      - docs/
+      - docs/services/ (service documentation only)
+      - mkdocs.yml
+      - requirements.txt (docs dependencies)
+      - .github/workflows/deploy-pages.yml
+      - .github/workflows/docs-ci.yml
+      - scripts/sync_openapi.sh
+      - README.md
+    removes:
+      - services/*/app/
+      - services/*/tests/
+      - services/*/Dockerfile
+      - services/*/requirements.txt
+      - services/*/pytest.ini
+      - services/*/pyproject.toml
+      - .github/workflows/test-*.yml
+      - codecov.yml
+      - .pre-commit-config.yaml
+      - docker-compose.yml
+      - All migration/quality docs created during quality hardening
+    notes: "Public docs portal; no service code"
+
+  - name: cortx-sdks
+    source_path: ./cortx-sdks/
+    destination_repo: cortx-sdks
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Already exists as cloned repo in workspace"
+
+  - name: cortx-packs
+    source_path: ./cortx-packs/
+    destination_repo: cortx-packs
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Already exists as cloned repo in workspace"
+
+  - name: cortx-designer
+    source_path: ./cortx-designer/
+    destination_repo: cortx-designer
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Already exists as cloned repo in workspace"
+
+  - name: cortx-e2e
+    source_path: ./cortx-e2e/
+    destination_repo: cortx-e2e
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Already exists as cloned repo in workspace; recently created with Playwright tests"
+
+  - name: cortx-platform
+    source_path: ./cortx-platform/
+    destination_repo: cortx-platform
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-structure
+    notes: "Existing repo; currently only has gateway service; may be deprecated in favor of individual service repos"
+
+  - name: cortx-infra
+    source_path: ./infra/
+    destination_repo: cortx-infra
+    destination_path: ./
+    split_strategy: new-repo
+    status: to-create
+    includes:
+      - terraform/
+      - helm/
+      - docker/
+      - sql/
+      - docs/
+    notes: "Infrastructure as code; needs to be created"
+
+  - name: cortx-ci
+    source_path: null
+    destination_repo: cortx-ci
+    destination_path: ./
+    split_strategy: new-repo
+    status: to-create
+    includes:
+      - .github/workflows/reusable-*.yml
+    notes: "Reusable CI workflows; to be created from scratch"
+
+# Suite Repositories
+suites:
+  - name: cortx-suites
+    source_path: null
+    destination_repo: cortx-suites
+    destination_path: ./
+    split_strategy: consolidate
+    status: to-create
+    consolidates:
+      - ./fedsuite/ → ./fedsuite/
+      - ./corpsuite/ → ./corpsuite/
+      - ./medsuite/ → ./medsuite/
+      - ./govsuite/ → ./govsuite/
+    structure:
+      - fedsuite/
+      - corpsuite/
+      - medsuite/
+      - govsuite/
+      - frontend/ (shared Next.js UI)
+      - shared/ (common utilities)
+      - docs/
+    notes: "Consolidate all suite repos into single cortx-suites monorepo OR keep as separate repos"
+
+  - name: fedsuite
+    source_path: ./fedsuite/
+    destination_repo: fedsuite
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Federal financial compliance modules"
+
+  - name: corpsuite
+    source_path: ./corpsuite/
+    destination_repo: corpsuite
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Corporate real estate modules"
+
+  - name: medsuite
+    source_path: ./medsuite/
+    destination_repo: medsuite
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Healthcare compliance modules"
+
+  - name: govsuite
+    source_path: ./govsuite/
+    destination_repo: govsuite
+    destination_path: ./
+    split_strategy: already-exists
+    status: exists-as-subdir
+    action: verify-and-update
+    notes: "Government operations modules"
+
+# Workspace-Only Directories (not tracked repos)
+workspace_only:
+  - name: repos/
+    action: keep-local
+    notes: "Clone directory for multi-repo orchestration scripts"
+
+  - name: packages/
+    action: review
+    notes: "Check if belongs in cortx-sdks or cortx-platform"
+
+  - name: site/
+    action: gitignore
+    notes: "MkDocs build output"
+
+  - name: specs/
+    action: review
+    notes: "May belong in cortx-packs or individual service repos"
+
+  - name: templates/
+    action: keep-in-docs
+    notes: "Documentation templates"
+
+  - name: tools/
+    action: review
+    notes: "Utility scripts; may distribute to relevant repos"
+
+  - name: archive/
+    action: keep-local
+    notes: "Historical files not in active use"
+
+  - name: DAILY_LOGS/
+    action: keep-local
+    notes: "Development logs"
+
+# Migration Order (dependency-based)
+migration_order:
+  1:
+    - cortx-ci (create reusable workflows first)
+    - cortx-infra (infrastructure definitions)
+  2:
+    - cortx-gateway
+    - cortx-identity
+    - cortx-validation
+    - cortx-ai-broker
+  3:
+    - cortx-workflow (depends on gateway/identity)
+    - cortx-compliance
+    - cortx-rag (depends on ai-broker)
+    - cortx-ocr
+    - cortx-ledger
+  4:
+    - cortx-packs (update and verify)
+    - cortx-designer (depends on all services)
+  5:
+    - cortx-sdks (depends on all service OpenAPIs)
+  6:
+    - fedsuite/corpsuite/medsuite/govsuite (depend on SDKs)
+  7:
+    - cortx-e2e (depends on all deployed services)
+  8:
+    - cortx-docs (cleanup; final OpenAPI sync)
+
+# Risk Factors
+risks:
+  high:
+    - "Loss of git history during splits - Mitigation: Use git subtree split with preserved history"
+    - "Service interdependencies during migration - Mitigation: Follow migration order; use feature flags"
+    - "Breaking changes to existing workflows - Mitigation: Comprehensive testing in dev environment"
+
+  medium:
+    - "CI/CD downtime during transition - Mitigation: Maintain parallel CI until cutover"
+    - "Documentation drift - Mitigation: Automated OpenAPI sync from service repos"
+
+  low:
+    - "Developer workflow disruption - Mitigation: Clear migration guide and runbook"
+    - "Workspace cleanup complexity - Mitigation: Incremental cleanup after successful migrations"
+
+# Success Criteria
+success_criteria:
+  - All 9 service repos created with preserved git history
+  - Each service repo builds and tests pass locally
+  - CI/CD green on all service repos
+  - cortx-docs contains only documentation (no service code)
+  - OpenAPI specs automatically sync from service repos to cortx-docs
+  - All suite repos properly structured
+  - Infrastructure repo created with Terraform/Helm
+  - E2E tests green against deployed services
+  - Developer documentation updated with new multi-repo workflow
+
+# Rollback Strategy
+rollback:
+  - Keep current cortx-docs state until all service repos are verified
+  - Tag current state before any destructive operations
+  - Document rollback commands for each phase
+  - Maintain backup branches: `pre-migration-backup-2025-10-08`
