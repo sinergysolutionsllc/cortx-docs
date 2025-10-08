@@ -1,14 +1,586 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: OCR API
-  version: 0.1.0
+  title: AI-Enhanced OCR Service
+  description: |
+    Multi-tier OCR pipeline with automatic escalation from Tesseract to Claude Vision to human review.
+
+    ## Processing Tiers
+
+    1. **Tesseract OCR** - Fast, cost-effective OCR for modern, clear documents
+    2. **Claude 3.5 Sonnet Vision** - AI-powered OCR for historical, handwritten, or degraded documents
+    3. **Human Review** - 100% accuracy guarantee for critical documents
+
+    ## Workflow
+
+    1. Submit document via `POST /extract`
+    2. Service automatically selects best tier based on confidence
+    3. Poll `GET /jobs/{job_id}` for results
+    4. If needed, submit corrections via `PUT /jobs/{job_id}/review`
+
+    ## Caching
+
+    Documents are cached by SHA-256 hash to avoid reprocessing identical documents.
+  version: 1.0.0
+  contact:
+    name: Sinergy Solutions LLC
+    email: support@sinergysolutionsllc.com
+  license:
+    name: Proprietary
+
 servers:
   - url: http://localhost:8137
+    description: Local development server
+  - url: https://ocr.sinergysolutionsllc.com
+    description: Production server
+
+tags:
+  - name: health
+    description: Health check endpoints
+  - name: ocr
+    description: OCR processing operations
+  - name: cache
+    description: Cache management
+  - name: stats
+    description: Service statistics
+  - name: meta
+    description: Service metadata
+
 paths:
-  /health:
+  /:
     get:
-      summary: Health check
+      summary: Service information
+      description: Get basic information about the OCR service
+      operationId: getServiceInfo
+      tags:
+        - meta
       responses:
         '200':
-          description: OK
+          description: Service information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    type: string
+                  version:
+                    type: string
+                  description:
+                    type: string
+                  tiers:
+                    type: array
+                    items:
+                      type: object
+                  endpoints:
+                    type: object
 
+  /health:
+    get:
+      summary: Detailed health check
+      description: Get detailed health status of the OCR service
+      operationId: healthCheck
+      tags:
+        - health
+      responses:
+        '200':
+          description: Service health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /healthz:
+    get:
+      summary: Liveness probe
+      description: Kubernetes liveness probe endpoint
+      operationId: liveness
+      tags:
+        - health
+      responses:
+        '200':
+          description: Service is alive
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+
+  /readyz:
+    get:
+      summary: Readiness probe
+      description: Kubernetes readiness probe endpoint
+      operationId: readiness
+      tags:
+        - health
+      responses:
+        '200':
+          description: Service is ready
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+        '503':
+          description: Service is not ready
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  error:
+                    type: string
+
+  /extract:
+    post:
+      summary: Extract text from document
+      description: |
+        Submit a document for OCR processing. The service will:
+        1. Check cache for existing results
+        2. Process with Tesseract (fast tier)
+        3. Escalate to Claude Vision if confidence is low
+        4. Queue for human review if still below threshold
+
+        Returns immediately with a job ID. Poll GET /jobs/{job_id} for results.
+      operationId: extractText
+      tags:
+        - ocr
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OCRRequest'
+      responses:
+        '200':
+          description: OCR job created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OCRJobResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /jobs/{job_id}:
+    get:
+      summary: Get OCR job status
+      description: Retrieve the status and results of an OCR job
+      operationId: getJob
+      tags:
+        - ocr
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: UUID of the OCR job
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Job found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OCRJobResponse'
+        '400':
+          description: Invalid job ID format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /jobs/{job_id}/review:
+    put:
+      summary: Submit human review
+      description: |
+        Submit human review corrections for an OCR job.
+        This endpoint allows reviewers to correct OCR results and mark them as verified.
+        The job status will be updated to COMPLETED with 100% confidence.
+      operationId: submitReview
+      tags:
+        - ocr
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: UUID of the OCR job
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OCRReviewRequest'
+      responses:
+        '200':
+          description: Review submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OCRJobResponse'
+        '400':
+          description: Invalid request or job not awaiting review
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /cache/{document_hash}:
+    get:
+      summary: Check cache for document
+      description: Check if a document hash exists in cache to avoid reprocessing
+      operationId: getCacheEntry
+      tags:
+        - cache
+      parameters:
+        - name: document_hash
+          in: path
+          required: true
+          description: SHA-256 hash of the document
+          schema:
+            type: string
+            pattern: '^[a-f0-9]{64}$'
+      responses:
+        '200':
+          description: Cache lookup result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OCRCacheResponse'
+
+  /stats:
+    get:
+      summary: Get service statistics
+      description: Retrieve OCR service statistics, optionally filtered by tenant
+      operationId: getStats
+      tags:
+        - stats
+      parameters:
+        - name: tenant_id
+          in: query
+          required: false
+          description: Filter statistics by tenant ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Service statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OCRStatsResponse'
+
+components:
+  schemas:
+    OCRStatus:
+      type: string
+      enum:
+        - pending
+        - processing_tesseract
+        - processing_ai
+        - awaiting_review
+        - completed
+        - failed
+      description: OCR job processing status
+
+    OCRTier:
+      type: string
+      enum:
+        - tesseract
+        - ai_vision
+        - human_review
+      description: OCR processing tier
+
+    OCRRequest:
+      type: object
+      required:
+        - document_hash
+        - document_data
+        - tenant_id
+      properties:
+        document_hash:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+          description: SHA-256 hash of the document
+          example: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+        document_data:
+          type: string
+          format: byte
+          description: Base64-encoded document data
+        document_type:
+          type: string
+          description: MIME type or file extension
+          example: image/png
+        tenant_id:
+          type: string
+          description: Tenant identifier
+          example: tenant-123
+        user_id:
+          type: string
+          description: User identifier for audit trail
+          example: user-456
+        force_tier:
+          $ref: '#/components/schemas/OCRTier'
+        require_review:
+          type: boolean
+          default: false
+          description: Whether human review is required regardless of confidence
+        confidence_threshold:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Custom confidence threshold
+        extract_fields:
+          type: array
+          items:
+            type: string
+          description: Specific fields to extract
+          example: ["name", "date", "amount"]
+        correlation_id:
+          type: string
+          description: Correlation ID for request tracing
+          example: req-789
+
+    OCRJobResponse:
+      type: object
+      required:
+        - job_id
+        - tenant_id
+        - status
+        - document_hash
+        - created_at
+        - updated_at
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          description: Unique job identifier
+        tenant_id:
+          type: string
+          description: Tenant identifier
+        status:
+          $ref: '#/components/schemas/OCRStatus'
+        document_hash:
+          type: string
+          description: Document hash
+        tier_used:
+          $ref: '#/components/schemas/OCRTier'
+        confidence_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Overall confidence score
+        extracted_text:
+          type: string
+          description: Extracted text content
+        extracted_fields:
+          type: object
+          additionalProperties: true
+          description: Extracted structured fields
+        document_type:
+          type: string
+          description: Document type
+        page_count:
+          type: integer
+          description: Number of pages processed
+        processing_time_ms:
+          type: integer
+          description: Processing time in milliseconds
+        tesseract_confidence:
+          type: number
+          format: float
+          description: Tesseract confidence score
+        ai_confidence:
+          type: number
+          format: float
+          description: AI vision confidence score
+        warnings:
+          type: object
+          additionalProperties: true
+          description: Processing warnings
+        error_message:
+          type: string
+          description: Error message if failed
+        created_at:
+          type: string
+          format: date-time
+          description: Job creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        user_id:
+          type: string
+          description: User who submitted the job
+        correlation_id:
+          type: string
+          description: Request correlation ID
+
+    OCRReviewRequest:
+      type: object
+      required:
+        - reviewer_id
+      properties:
+        reviewer_id:
+          type: string
+          description: ID of the reviewer
+          example: reviewer-789
+        corrected_text:
+          type: string
+          description: Corrected text (if different from extracted)
+        corrected_fields:
+          type: object
+          additionalProperties: true
+          description: Corrected structured fields
+        review_notes:
+          type: string
+          description: Notes about the review
+        review_time_seconds:
+          type: integer
+          description: Time spent on review in seconds
+
+    OCRCacheResponse:
+      type: object
+      required:
+        - cache_hit
+        - document_hash
+      properties:
+        cache_hit:
+          type: boolean
+          description: Whether cache entry was found
+        document_hash:
+          type: string
+          description: Document hash
+        extracted_text:
+          type: string
+          description: Cached extracted text
+        extracted_fields:
+          type: object
+          additionalProperties: true
+          description: Cached structured fields
+        confidence_score:
+          type: number
+          format: float
+          description: Cached confidence score
+        tier_used:
+          $ref: '#/components/schemas/OCRTier'
+        page_count:
+          type: integer
+          description: Number of pages
+        processing_time_ms:
+          type: integer
+          description: Original processing time
+        cached_at:
+          type: string
+          format: date-time
+          description: When result was cached
+        last_accessed_at:
+          type: string
+          format: date-time
+          description: Last access time
+        hit_count:
+          type: integer
+          description: Number of cache hits
+
+    OCRStatsResponse:
+      type: object
+      required:
+        - total_jobs
+        - jobs_by_status
+        - jobs_by_tier
+        - average_confidence
+        - average_processing_time_ms
+        - cache_hit_rate
+      properties:
+        total_jobs:
+          type: integer
+          description: Total number of jobs processed
+        jobs_by_status:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Job counts by status
+        jobs_by_tier:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Job counts by tier
+        average_confidence:
+          type: number
+          format: float
+          description: Average confidence score
+        average_processing_time_ms:
+          type: number
+          format: float
+          description: Average processing time
+        cache_hit_rate:
+          type: number
+          format: float
+          description: Cache hit rate (0-100)
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - version
+        - tesseract_available
+        - anthropic_api_available
+        - database_connected
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+          description: Service status
+        version:
+          type: string
+          description: Service version
+        tesseract_available:
+          type: boolean
+          description: Whether Tesseract is available
+        anthropic_api_available:
+          type: boolean
+          description: Whether Anthropic API is configured
+        database_connected:
+          type: boolean
+          description: Whether database is connected
+
+    Error:
+      type: object
+      required:
+        - detail
+      properties:
+        detail:
+          type: string
+          description: Error message

@@ -1,0 +1,21 @@
+Category,Target Location (Monorepo),Current Repository,Source Path(s),Notes / Action
+----------,----------------------------,--------------------,----------------,----------------
+Platform Core,`services/gateway`,`cortx-platform`,`cortx-platform/services/gateway`,"Migrated 2025-10-06; normalize config & shared package dependencies before release."
+Platform Core,`services/identity`,`cortx-platform`,`cortx-platform/services/identity`,"Migrated 2025-10-06; hook up shared config/DB wiring and finalize RBAC storage."
+Platform Core,`services/validation`,`cortx-platform`,`cortx-platform/services/validation`,"Migrated 2025-10-06 from cortx-hashtrack; RulePack executor with FastAPI service + updated Dockerfile for shared packages."
+Platform Core,`services/workflow`,`cortx-platform`,`cortx-platform/services/workflow`,"Migrated 2025-10-06 from cortx-hashtrack; Workflow engine with FastAPI service + updated Dockerfile for shared packages."
+Platform Core,`services/compliance`,`cortx-platform`,`cortx-platform/services/compliance`,"Migrated 2025-10-06 with stub service structure; TODO: implement compliance tools from cortx-hashtrack/tools."
+Platform Core,`services/config-service`,`cortx-platform`,`cortx-platform/services/config_service`,Central configuration registry; ensure env parity.
+Platform Core,`services/packs-registry`,`cortx-platform`,`cortx-platform/services/packs_registry`,Pack metadata service; integrate with `cortx-packs`.
+Platform Core,`services/rulepack-registry`,`cortx-platform`,`cortx-platform/services/rulepack_registry`,Decide merge vs deprecate in favour of packs-registry.
+Platform Core,`services/schemas`,`cortx-platform`,`cortx-platform/services/schemas`,Schema registry microservice; sync with `specs/schemas`.
+Platform Core,`services/observability`,`cortx-platform`,`cortx-platform/services/observability`,Centralized metrics/logging aggregator.
+Platform Core,`services/events`,`cortx-platform`,`cortx-platform/services/events`,Pub/Sub helpers for cross-suite workflows.
+Platform Core,`services/ingestion`,"`cortx-platform`, `cortx-hashtrack`","`cortx-platform/services/ingestion`, `cortx-hashtrack/backend/ingestion_svc`",Combine generic ingestion engine with PropVerify adapters.
+Platform Core,`services/ai-broker`,"`cortx-platform`, `cortx-hashtrack`","`cortx-platform/services/ai-broker`, `cortx-hashtrack/backend/ai_svc`",Merge templating/PII scrub features; expose unified API.
+Platform Core,`services/ledger`,`cortx-hashtrack`,`cortx-hashtrack/backend/ledger_svc`,Append-only ledger; integrate proof hashing + compliance events.
+Platform Core,`services/ocr`,`cortx-hashtrack`,`cortx-hashtrack/backend/ingestion_svc/ocr`,OCR adapters (Tesseract/DocAI); factor into standalone service.
+Platform Core,`services/rag`,`greenlight`,`greenlight/services/rag`,Production RAG with multi-scope retrieval; align to FDD hierarchy.
+Platform Core,`services/observability` infrastructure,"`greenlight`, `OffermAit`, `cortx-platform`","`greenlight/infra/terraform/observability`, `OffermAit/monitoring`, `cortx-platform/services/observability`",Merge dashboards + alerting into shared ops stack.
+Platform Core,`infra/helm`,"`cortx-platform`, `cortx-hashtrack`","`cortx-hashtrack/helm/*`, Dockerfiles across services",Harmonize deployment charts and base images.
+Ops & Infra,`infra/terraform/cloudflare`,Monorepo,`infra/terraform/cloudflare/*`,Manage Cloudflare zones & DNS for platform and suite domains via Terraform.

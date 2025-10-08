@@ -1,0 +1,209 @@
+# Codecov Configuration for CORTX Platform
+# Documentation: https://docs.codecov.io/docs/codecov-yaml
+
+# Coverage settings
+coverage:
+  precision: 2
+  round: down
+  range: 70...100
+
+  status:
+    # Project-level coverage status
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+        base: auto
+        if_ci_failed: error
+
+    # Patch-level coverage for PRs
+    patch:
+      default:
+        target: 80%
+        threshold: 2%
+        base: auto
+        if_ci_failed: error
+
+    # Per-service flags
+    ai-broker:
+      flags:
+      - ai-broker
+      target: 80%
+      threshold: 1%
+
+    compliance:
+      flags:
+      - compliance
+      target: 80%
+      threshold: 1%
+
+    gateway:
+      flags:
+      - gateway
+      target: 80%
+      threshold: 1%
+
+    identity:
+      flags:
+      - identity
+      target: 80%
+      threshold: 1%
+
+    ledger:
+      flags:
+      - ledger
+      target: 80%
+      threshold: 1%
+
+    ocr:
+      flags:
+      - ocr
+      target: 80%
+      threshold: 1%
+
+    rag:
+      flags:
+      - rag
+      target: 80%
+      threshold: 1%
+
+    validation:
+      flags:
+      - validation
+      target: 80%
+      threshold: 1%
+
+    workflow:
+      flags:
+      - workflow
+      target: 80%
+      threshold: 1%
+
+# Comments on pull requests
+comment:
+  layout: header, diff, flags, files, footer
+  behavior: default
+  require_changes: false
+  require_base: no
+  require_head: yes
+
+# Flags for service-specific coverage
+flags:
+  ai-broker:
+    paths:
+    - services/ai-broker/app/
+    carryforward: true
+
+  compliance:
+    paths:
+    - services/compliance/app/
+    carryforward: true
+
+  gateway:
+    paths:
+    - services/gateway/app/
+    carryforward: true
+
+  identity:
+    paths:
+    - services/identity/app/
+    carryforward: true
+
+  ledger:
+    paths:
+    - services/ledger/app/
+    carryforward: true
+
+  ocr:
+    paths:
+    - services/ocr/app/
+    carryforward: true
+
+  rag:
+    paths:
+    - services/rag/app/
+    carryforward: true
+
+  validation:
+    paths:
+    - services/validation/app/
+    carryforward: true
+
+  workflow:
+    paths:
+    - services/workflow/app/
+    carryforward: true
+
+# File ignore patterns
+ignore:
+- '**/__pycache__'
+- '**/.pytest_cache'
+- '**/tests/**'
+- '**/htmlcov/**'
+- '**/*.egg-info/**'
+- '**/venv/**'
+- '**/.venv/**'
+- '**/node_modules/**'
+- '**/__init__.py'
+- '**/conftest.py'
+- '**/migrations/**'
+
+# Notification settings
+slack_app: false
+github_checks:
+  annotations: true
+
+# Component configuration for multi-service repo
+component_management:
+  default_rules:
+    statuses:
+    - type: project
+      target: 80%
+    - type: patch
+      target: 80%
+
+  individual_components:
+  - component_id: ai-broker
+    name: AI Broker Service
+    paths:
+    - services/ai-broker/**
+
+  - component_id: compliance
+    name: Compliance Service
+    paths:
+    - services/compliance/**
+
+  - component_id: gateway
+    name: Gateway Service
+    paths:
+    - services/gateway/**
+
+  - component_id: identity
+    name: Identity Service
+    paths:
+    - services/identity/**
+
+  - component_id: ledger
+    name: Ledger Service
+    paths:
+    - services/ledger/**
+
+  - component_id: ocr
+    name: OCR Service
+    paths:
+    - services/ocr/**
+
+  - component_id: rag
+    name: RAG Service
+    paths:
+    - services/rag/**
+
+  - component_id: validation
+    name: Validation Service
+    paths:
+    - services/validation/**
+
+  - component_id: workflow
+    name: Workflow Service
+    paths:
+    - services/workflow/**

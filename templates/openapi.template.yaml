@@ -7,20 +7,20 @@ info:
     Concrete (no placeholders) so it can be copy-adapted.
 
 servers:
-  - url: https://platform.sinergysolutions.ai/rag
-    description: Production
-  - url: https://staging.platform.sinergysolutions.ai/rag
-    description: Staging
-  - url: http://localhost:8138
-    description: Local Dev
+- url: https://platform.sinergysolutions.ai/rag
+  description: Production
+- url: https://staging.platform.sinergysolutions.ai/rag
+  description: Staging
+- url: http://localhost:8138
+  description: Local Dev
 
 tags:
-  - name: Health
-  - name: Ingestion
-  - name: Query
+- name: Health
+- name: Ingestion
+- name: Query
 
 security:
-  - bearerAuth: []
+- bearerAuth: []
 
 paths:
   /health:
@@ -82,9 +82,9 @@ components:
     HealthStatus:
       type: object
       properties:
-        status: { type: string, enum: [ok] }
-        service: { type: string, example: "svc-rag" }
-        time: { type: string, format: date-time }
+        status: {type: string, enum: [ok]}
+        service: {type: string, example: svc-rag}
+        time: {type: string, format: date-time}
       required: [status, service, time]
 
     IngestRequest:
@@ -115,26 +115,26 @@ components:
       example:
         level: module
         suite_id: fedsuite
-        module_id: fedtransform
+        module_id: dataflow
         source_type: url
-        source_uri: "https://omb.gov/circulars/a-136.pdf"
-        metadata: { tags: ["policy","federal"] }
+        source_uri: https://omb.gov/circulars/a-136.pdf
+        metadata: {tags: [policy, federal]}
 
     IngestAccepted:
       type: object
       properties:
-        job_id: { type: string }
-        status: { type: string, enum: [queued] }
+        job_id: {type: string}
+        status: {type: string, enum: [queued]}
       required: [job_id, status]
 
     QueryRequest:
       type: object
       properties:
-        query: { type: string }
-        suite_id: { type: string, nullable: true }
-        module_id: { type: string, nullable: true }
-        entity_id: { type: string, nullable: true }
-        top_k: { type: integer, minimum: 1, maximum: 50, default: 15 }
+        query: {type: string}
+        suite_id: {type: string, nullable: true}
+        module_id: {type: string, nullable: true}
+        entity_id: {type: string, nullable: true}
+        top_k: {type: integer, minimum: 1, maximum: 50, default: 15}
         include_levels:
           type: array
           items:
@@ -142,9 +142,9 @@ components:
             enum: [platform, suite, module, entity]
       required: [query]
       example:
-        query: "Map Oracle GL_BALANCES to GTAS Line 1000"
+        query: Map Oracle GL_BALANCES to GTAS Line 1000
         suite_id: fedsuite
-        module_id: fedtransform
+        module_id: dataflow
         top_k: 15
         include_levels: [module, suite, entity, platform]
 
@@ -156,14 +156,14 @@ components:
           items:
             type: object
             properties:
-              level: { type: string }
-              score: { type: number }
-              chunk: { type: string }
-              source_uri: { type: string }
-              metadata: { type: object, additionalProperties: true }
+              level: {type: string}
+              score: {type: number}
+              chunk: {type: string}
+              source_uri: {type: string}
+              metadata: {type: object, additionalProperties: true}
         usage:
           type: object
           properties:
-            duration_ms: { type: integer }
-            chunks_examined: { type: integer }
+            duration_ms: {type: integer}
+            chunks_examined: {type: integer}
       required: [hits]

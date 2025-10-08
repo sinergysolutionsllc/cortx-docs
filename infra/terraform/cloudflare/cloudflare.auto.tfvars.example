@@ -1,0 +1,64 @@
+# Cloudflare DNS configuration example
+# Copy to cloudflare.auto.tfvars and replace placeholder values.
+
+cloudflare_api_token = "${CLOUDFLARE_API_TOKEN}"
+
+default_account_id = "cf_account_id_here"
+
+domains = {
+  sinergysolutions_ai = {
+    zone        = "sinergysolutions.ai"
+    create_zone = false
+    records = [
+      {
+        name    = "@"
+        type    = "A"
+        content = "203.0.113.10"
+        proxied = true
+      },
+      {
+        name    = "www"
+        type    = "CNAME"
+        content = "sinergysolutions.ai"
+        proxied = true
+      }
+    ]
+  }
+
+  fedsuite_ai = {
+    zone        = "fedsuite.ai"
+    create_zone = false
+    records = [
+      {
+        name    = "@"
+        type    = "A"
+        content = "203.0.113.20"
+        proxied = true
+      },
+      {
+        name    = "api"
+        type    = "CNAME"
+        content = "sinergysolutions.ai"
+        proxied = false
+      }
+    ]
+  }
+
+  corpsuite_ai = {
+    zone        = "corpsuite.ai"
+    create_zone = false
+    records = []
+  }
+
+  medsuite_ai = {
+    zone        = "medsuite.ai"
+    create_zone = false
+    records = []
+  }
+
+  govsuite_ai = {
+    zone        = "govsuite.ai"
+    create_zone = false
+    records = []
+  }
+}

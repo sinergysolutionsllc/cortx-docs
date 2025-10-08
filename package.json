@@ -1,0 +1,27 @@
+{
+  "name": "sinergy-cortx-monorepo",
+  "version": "1.0.0",
+  "description": "Sinergy Solutions CORTX Monorepo",
+  "scripts": {
+    "dev": "concurrently -n 'DESIGNER,FEDSUITE' -c 'cyan,yellow' 'npm run dev:designer' 'npm run dev:fedsuite'",
+    "dev:all": "concurrently -n 'DESIGNER,OFFERM,SUITES,FEDSUITE' -c 'cyan,magenta,green,yellow' 'npm run dev:designer' 'npm run dev:offerm' 'npm run dev:suites' 'npm run dev:fedsuite'",
+    "dev:designer": "cd cortx-designer/frontend && npm run dev",
+    "dev:offerm": "cd /Users/michael/Development/OffermAit/frontend && npm run dev -- -p 3001",
+    "dev:suites": "cd /Users/michael/Development/cortx-suites/frontend && npm run dev -- -p 3002",
+    "dev:fedsuite": "cd fedsuite/frontend && npm run dev -- -p 3003",
+    "build:all": "npm run build:designer && npm run build:offerm && npm run build:suites && npm run build:fedsuite",
+    "build:designer": "cd cortx-designer/frontend && npm run build",
+    "build:offerm": "cd ../../OffermAit/frontend && npm run build",
+    "build:suites": "cd ../../cortx-suites/frontend && npm run build",
+    "build:fedsuite": "cd fedsuite/frontend && npm run build",
+    "install:all": "npm run install:designer && npm run install:offerm && npm run install:suites && npm run install:fedsuite",
+    "install:designer": "cd cortx-designer/frontend && npm install",
+    "install:offerm": "cd ../../OffermAit/frontend && npm install",
+    "install:suites": "cd ../../cortx-suites/frontend && npm install",
+    "install:fedsuite": "cd fedsuite/frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "private": true
+}

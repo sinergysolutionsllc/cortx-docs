@@ -1,14 +1,61 @@
 openapi: 3.0.3
 info:
-  title: Compliance API
+  title: CORTX Compliance Service API
   version: 0.1.0
-servers:
-  - url: http://localhost:8135
+  description: Compliance logging, reporting, and regulatory event tracking
 paths:
   /health:
     get:
       summary: Health check
       responses:
         '200':
-          description: OK
-
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+  /compliance/events:
+    post:
+      summary: Log compliance event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_type:
+                  type: string
+                  enum: [audit, regulatory, violation]
+                description:
+                  type: string
+                data:
+                  type: object
+      responses:
+        '201':
+          description: Event logged successfully
+    get:
+      summary: Get compliance events
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: List of compliance events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object

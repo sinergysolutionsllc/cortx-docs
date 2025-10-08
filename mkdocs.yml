@@ -4,7 +4,9 @@ theme:
 nav:
 - Home: index.md
 - Overview: overview/index.md
-- Architecture: architecture/index.md
+- Architecture:
+  - Overview: architecture/index.md
+  - Hierarchical RAG Architecture: architecture/HIERARCHICAL_RAG_ARCHITECTURE.md
 - Services:
   - services/index.md
   - Gateway:
@@ -54,10 +56,64 @@ nav:
   - OCR API: apis/ocr.md
   - RAG API: apis/rag.md
 - Suites: suites/index.md
-- Packs: packs/index.md
+- Packs:
+  - Overview: packs/index.md
+  - Pack Authoring Guide: packs/PACK_AUTHORING_GUIDE.md
+  - Pack Governance: packs/PACK_GOVERNANCE.md
+  - RulePack Schema: packs/RULEPACK_SCHEMA.md
+  - WorkflowPack Schema: packs/WORKFLOWPACK_SCHEMA.md
 - SDKs: sdks/index.md
+- FDD:
+  - CORTX Platform FDD: fdd/CORTX_PLATFORM_FDD.md
+  - Platform Chapters:
+    - 1. Executive Summary: fdd/01.Executive_Summary.md
+    - 2. Functional Requirements: fdd/02.Functional_Requirements.md
+    - 3. Technical Architecture: fdd/03.Technical_Architecture.md
+    - 4. Schemas & Governance: fdd/04.Schemas_and_Governance.md
+    - 5. Integration Points: fdd/05.Integration_Points.md
+    - 6. Testing Strategy: fdd/06.Testing_Strategy.md
+    - 7. Deployment & Operations: fdd/07.Deployment_and_Operations.md
+    - 8. Roadmap: fdd/08.Roadmap.md
+    - 9. Appendices: fdd/09.Appendices.md
+- Marketplace: marketplace/MARKETPLACE_VISION.md
 - Security: security/index.md
-- Operations: operations/index.md
-- Contributing: contribute/index.md
-- ADRs: adrs/index.md
+- AI Governance:
+  - AI Rules & Guidelines: ai_governance/AI_RULES.md
+  - Platform Focus & Priorities: ai_governance/FOCUS.md
+  - Model Selection & Routing: ai_governance/MODEL_SELECTION.md
+  - RAG Knowledge Base: ai_governance/RAG_KNOWLEDGE_BASE.md
+- Operations:
+  - Overview: operations/index.md
+  - Docs Governance Prompt: operations/DOCS_GOVERNANCE_PROMPT.md
+  - GitHub Org Setup Prompt: operations/GH_ORG_SETUP_PROMPT.md
+  - Repo Instruction: operations/REPO_INSTRUCTION.md
+  - Repo Standardization: operations/REPO_STANDARDIZATION_ADAPTATION.md
+- Diagrams:
+  - Platform Topology: diagrams/platform_topology.md
+  - Dev → Staging → Prod Pipeline: diagrams/dev_staging_prod_pipeline.md
+  - Hierarchical RAG Flow: diagrams/hierarchical_rag_flow.md
+  - Ledger Append & Verify: diagrams/ledger_append_verify.md
+- Contributing:
+  - Overview: contribute/index.md
+  - Tutorial: contribute/TUTORIAL.md
+- Reports:
+  - UI Modernization:
+    - Branding Guide: reports/ui/UI_BRANDING_IMPLEMENTATION_GUIDE.md
+    - Components Audit: reports/ui/UI_COMPONENTS_AUDIT.md
+    - Integration Report: reports/ui/UI_INTEGRATION_COMPLETION_REPORT.md
+    - Final Summary: reports/ui/UI_INTEGRATION_FINAL_SUMMARY.md
+    - Modernization Guide: reports/ui/UI_MODERNIZATION_GUIDE.md
+    - Phase 2 Completion: reports/ui/PHASE_2_COMPONENT_LIBRARY_COMPLETION.md
+- Tracking:
+  - Refactor Plan: tracking/REPO_REFACTOR_PLAN_TRACKER.md
+- ADRs:
+  - Overview: adrs/index.md
+  - Master Index: adrs/ADR-000-index.md
 - RFCs: rfcs/index.md
+- Drafts (Internal):
+  - Refactoring Analysis: drafts/REFACTORING_ANALYSIS.md
+  - Prompts:
+    - Final Repo Setup Prompt: drafts/prompts/FINAL_REPO_SETUP_PROMPT.md
+    - Publish OpenAPI SyncGuard Docs CI: drafts/prompts/PUBLISH_OPENAPI_SYNCGUARD_DOCSCI.MD
+    - Repo Org Prompt: drafts/prompts/REPO_ORG_PROMPT.md
+    - Services Setup Prompt: drafts/prompts/SERVICES_SETUP_PROMPT.md

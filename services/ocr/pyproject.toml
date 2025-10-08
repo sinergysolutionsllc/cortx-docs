@@ -1,0 +1,60 @@
+[project]
+name = "cortx-ocr-service"
+version = "1.0.0"
+description = "AI-Enhanced OCR Service with multi-tier processing pipeline"
+authors = [
+    {name = "Sinergy Solutions LLC", email = "support@sinergysolutionsllc.com"}
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "Proprietary"}
+
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "sqlalchemy>=2.0.23",
+    "psycopg2-binary>=2.9.9",
+    "python-multipart>=0.0.6",
+    "pytesseract>=0.3.10",
+    "Pillow>=10.1.0",
+    "pdf2image>=1.16.3",
+    "opencv-python>=4.8.1.78",
+    "numpy>=1.24.3",
+    "aiofiles>=23.2.1",
+    "anthropic>=0.39.0",
+    "redis>=5.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.25.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false

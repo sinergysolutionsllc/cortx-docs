@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+app/__init__.py
+app/main.py
+cortx_workflow_service.egg-info/PKG-INFO
+cortx_workflow_service.egg-info/SOURCES.txt
+cortx_workflow_service.egg-info/dependency_links.txt
+cortx_workflow_service.egg-info/requires.txt
+cortx_workflow_service.egg-info/top_level.txt
+tests/test_imports.py

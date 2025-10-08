@@ -24,11 +24,19 @@ CORTX separates **platform services** from **suite-specific RulePacks/WorkflowPa
 | **Identity**  | 8082 | JWT/OIDC, RBAC, session management |
 | **Validation**| 8083 | JSON schema + RulePack validation |
 | **AI Broker** | 8085 | Provider routing (Vertex, OpenAI), PII redaction, embeddings |
+| **Config Service** | 8086 | Hierarchical configuration, feature flags, tenant overrides |
+| **Packs Registry** | 8089 | Pack catalog metadata, certification workflow |
+| **RulePack Registry** | 8091 | RulePack validation, signing, distribution |
+| **Ingestion** | 8092 | Connectors, PII scrubbing, normalization into Pack schemas |
+| **Events**    | 8094 | Pub/Sub backbone for ingestion, workflow, compliance events |
+| **Observability** | 8096 | Centralized metrics, logs, tracing, alert definitions |
 | **Workflow**  | 8130 | Workflow orchestration, Pack execution |
 | **Compliance**| 8135 | Compliance logs, reports |
 | **Ledger**    | 8136 | Append-only, SHA-256 hash-chained evidence (tamper-proof) |
 | **OCR**       | 8137 | Document → text/fields extraction (Tesseract/DocAI) |
 | **RAG**       | 8138 | 4-level hierarchical retrieval (Platform/Suite/Module/Entity) |
+| **Compliance Scanner** | 8140 | Pack-driven static/runtime compliance scanning |
+| **DataFlow**  | 8145 | Pack-defined transformations & reconciliation pipelines |
 
 ---
 
@@ -47,7 +55,7 @@ See [HIERARCHICAL_RAG_ARCHITECTURE.md](./HIERARCHICAL_RAG_ARCHITECTURE.md) for f
 
 ## 🏛 Suites & Modules
 
-- **FedSuite** → FedReconcile, FedTransform  
+- **FedSuite** → FedReconcile, DataFlow, FedConfig  
 - **CorpSuite** → PropVerify, Greenlight, InvestmAit  
 - **MedSuite** → ClaimsVerify, HIPAAAudit  
 - **GovSuite** → TBD modules  
@@ -75,27 +83,40 @@ See [CORTX_PLATFORM_FDD.md](./CORTX_PLATFORM_FDD.md) for deployment details.
 
 ## 👩‍💻 Developer Quickstart
 
-### Prerequisites
-- Python 3.11+
-- Node.js 20+
-- Docker & docker-compose
-- PostgreSQL with pgvector extension
+### Run Entire Platform Locally (Recommended)
 
-### Local Development
+**One command to run everything:**
+
 ```bash
-# Clone docs portal
+# Clone this repo
 git clone https://github.com/sinergysolutionsllc/cortx-docs.git
 cd cortx-docs
 
-# Sync latest OpenAPI specs from service repos (requires access)
+# Start all services (auto-clones repos, builds, and starts)
+./start-cortx.sh
+```
+
+This will:
+
+- ✅ Clone all 9 service repos + shared repos
+- ✅ Build Docker images with cortx-core dependencies
+- ✅ Start PostgreSQL + Redis + all services
+- ✅ Configure health checks and auto-restart
+- ✅ Services available at <http://localhost:8080-8138>
+
+See [RUNNING_LOCALLY.md](./RUNNING_LOCALLY.md) for detailed guide.
+
+---
+
+### Work on Documentation
+
+```bash
+# Sync latest OpenAPI specs from service repos
 bash scripts/sync_openapi.sh
 
 # Build docs locally (strict)
 pip install -r requirements.txt
 mkdocs build --strict
 
-# Run backend tests
-pytest
-
-# Run frontend
-cd apps/designer && npm run dev
+# Serve docs with live reload
+mkdocs serve

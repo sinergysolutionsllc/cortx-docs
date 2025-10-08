@@ -43,7 +43,7 @@ See [HIERARCHICAL_RAG_ARCHITECTURE.md](./HIERARCHICAL_RAG_ARCHITECTURE.md) for f
 
 ## 🏛 Suites & Modules
 
-- **FedSuite** → FedReconcile, FedTransform  
+- **FedSuite** → FedReconcile, DataFlow  
 - **CorpSuite** → PropVerify, Greenlight, InvestmAit  
 - **MedSuite** → ClaimsVerify, HIPAAAudit  
 - **GovSuite** → TBD modules  
@@ -72,12 +72,14 @@ See [CORTX_PLATFORM_FDD.md](./CORTX_PLATFORM_FDD.md) for deployment details.
 ## 👩‍💻 Developer Quickstart
 
 ### Prerequisites
+
 - Python 3.11+
 - Node.js 20+
 - Docker & docker-compose
 - PostgreSQL with pgvector extension
 
 ### Local Development
+
 ```bash
 # Clone repo
 git clone https://github.com/sinergysolutionsllc/cortx.git

@@ -1,0 +1,59 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Development files
+*.log
+*.tmp
+*.temp
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation and markdown files
+*.md
+README*
+CHANGELOG*
+LICENSE*
+docs/
+documentation/
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Test files
+tests/
+test_*.py
+*_test.py
+pytest.ini
+.pytest_cache/
+coverage/
+.coverage
+htmlcov/
+
+# Development configs
+.flake8
+.mypy.ini
+setup.cfg
+tox.ini
+.tox/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+app/__init__.py
+app/main.py
+clients/__init__.py
+clients/cortx.py
+cortx_validation_service.egg-info/PKG-INFO
+cortx_validation_service.egg-info/SOURCES.txt
+cortx_validation_service.egg-info/dependency_links.txt
+cortx_validation_service.egg-info/requires.txt
+cortx_validation_service.egg-info/top_level.txt

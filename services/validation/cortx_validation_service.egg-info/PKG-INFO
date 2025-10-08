@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: cortx-validation-service
+Version: 0.1.0
+Summary: CORTX Validation Service
+Requires-Python: >=3.11
+Requires-Dist: fastapi==0.111.0
+Requires-Dist: uvicorn[standard]==0.30.0
+Requires-Dist: prometheus-fastapi-instrumentator==6.1.0
+Requires-Dist: opentelemetry-sdk==1.26.0
+Requires-Dist: opentelemetry-exporter-otlp==1.26.0
+Requires-Dist: opentelemetry-instrumentation-fastapi==0.47b0
+Requires-Dist: opentelemetry-instrumentation-httpx==0.47b0
+Requires-Dist: cortx_backend
+Provides-Extra: dev
+Requires-Dist: pytest==8.3.2; extra == "dev"
+Requires-Dist: httpx==0.27.2; extra == "dev"
+Requires-Dist: pytest-cov==5.0.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: ruff==0.5.6; extra == "dev"
+Requires-Dist: mypy==1.11.2; extra == "dev"

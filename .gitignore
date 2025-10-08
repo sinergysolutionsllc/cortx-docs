@@ -38,3 +38,5 @@ medsuite/
 # Cloned repos for local development
 repos/
 
+# Archived legacy code
+archive/

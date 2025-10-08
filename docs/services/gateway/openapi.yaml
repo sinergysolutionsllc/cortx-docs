@@ -1,14 +1,916 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: Gateway API
+  title: CORTX Gateway
   version: 0.1.0
-servers:
-  - url: http://localhost:8080
 paths:
   /health:
     get:
-      summary: Health check
+      tags:
+      - Orchestrator
+      summary: Health Check
+      description: Health check for orchestrator and connected RulePacks.
+      operationId: health_check_health_get
       responses:
         '200':
-          description: OK
-
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Health Check Health Get
+  /:
+    get:
+      summary: Root
+      description: Root endpoint
+      operationId: root__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /_info:
+    get:
+      summary: Info
+      description: Service info endpoint
+      operationId: info__info_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /jobs/validate:
+    post:
+      tags:
+      - Orchestrator
+      summary: Create Validation Job
+      description: Create and execute validation job.
+      operationId: create_validation_job_jobs_validate_post
+      parameters:
+      - name: domain
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Domain
+      - name: mode
+        in: query
+        required: false
+        schema:
+          type: string
+          default: static
+          title: Mode
+      - name: input_ref
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Input Ref
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      - name: x-request-id
+        in: header
+        required: false
+        schema:
+          type: string
+          title: X-Request-Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body_create_validation_job_jobs_validate_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Create Validation Job Jobs Validate Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /jobs/{job_id}:
+    get:
+      tags:
+      - Orchestrator
+      summary: Get Job Status
+      description: Get validation job status and results.
+      operationId: get_job_status_jobs__job_id__get
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Job Id
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Get Job Status Jobs  Job Id  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /explain:
+    post:
+      tags:
+      - Orchestrator
+      summary: Explain Failure
+      description: Get explanation for a validation failure.
+      operationId: explain_failure_explain_post
+      parameters:
+      - name: domain
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Domain
+      - name: failure_id
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Failure Id
+      - name: include_policy_refs
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+          title: Include Policy Refs
+      - name: include_remediation
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+          title: Include Remediation
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      - name: x-request-id
+        in: header
+        required: false
+        schema:
+          type: string
+          title: X-Request-Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              title: Failure Data
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Explain Failure Explain Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /failures/{failure_id}/decision:
+    put:
+      tags:
+      - Orchestrator
+      summary: Update Failure Decision
+      description: Update user decision on a validation failure.
+      operationId: update_failure_decision_failures__failure_id__decision_put
+      parameters:
+      - name: failure_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Failure Id
+      - name: decision
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Decision
+      - name: reason
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Reason
+      - name: notes
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Notes
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      - name: x-request-id
+        in: header
+        required: false
+        schema:
+          type: string
+          title: X-Request-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Update Failure Decision Failures  Failure Id  Decision
+                  Put
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /feedback/rag/{interaction_id}:
+    post:
+      tags:
+      - Orchestrator
+      summary: Submit Rag Feedback
+      description: Submit feedback on RAG/AI explanations.
+      operationId: submit_rag_feedback_feedback_rag__interaction_id__post
+      parameters:
+      - name: interaction_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Interaction Id
+      - name: feedback
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Feedback
+      - name: details
+        in: query
+        required: false
+        schema:
+          type: string
+          title: Details
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      - name: x-request-id
+        in: header
+        required: false
+        schema:
+          type: string
+          title: X-Request-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Submit Rag Feedback Feedback Rag  Interaction Id  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /analytics/comparison/summary:
+    get:
+      tags:
+      - Analytics
+      summary: Get Comparison Summary
+      description: Get high-level comparison statistics between JSON and RAG validation.
+      operationId: get_comparison_summary_analytics_comparison_summary_get
+      parameters:
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Filter by domain
+          title: Domain
+        description: Filter by domain
+      - name: days_back
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Number of days to include
+          default: 30
+          title: Days Back
+        description: Number of days to include
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Get Comparison Summary Analytics Comparison Summary
+                  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /analytics/comparison/detailed:
+    get:
+      tags:
+      - Analytics
+      summary: Get Detailed Comparison
+      description: Get detailed comparison data for specific domain and filters.
+      operationId: get_detailed_comparison_analytics_comparison_detailed_get
+      parameters:
+      - name: domain
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Domain to analyze
+          title: Domain
+        description: Domain to analyze
+      - name: rule_category
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Filter by rule category
+          title: Rule Category
+        description: Filter by rule category
+      - name: confidence_min
+        in: query
+        required: false
+        schema:
+          type: number
+          description: Minimum confidence filter
+          default: 0.0
+          title: Confidence Min
+        description: Minimum confidence filter
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Maximum number of comparisons to return
+          default: 100
+          title: Limit
+        description: Maximum number of comparisons to return
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Get Detailed Comparison Analytics Comparison Detailed
+                  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /analytics/comparison/trends:
+    get:
+      tags:
+      - Analytics
+      summary: Get Comparison Trends
+      description: Get time-series trends for comparison metrics.
+      operationId: get_comparison_trends_analytics_comparison_trends_get
+      parameters:
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Filter by domain
+          title: Domain
+        description: Filter by domain
+      - name: metric
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Metric to trend
+          default: agreement_rate
+          title: Metric
+        description: Metric to trend
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          description: 'Period: hourly, daily, weekly'
+          default: daily
+          title: Period
+        description: 'Period: hourly, daily, weekly'
+      - name: days_back
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Number of days to include
+          default: 30
+          title: Days Back
+        description: Number of days to include
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Get Comparison Trends Analytics Comparison Trends
+                  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /analytics/comparison/rules/{rule_id}:
+    get:
+      tags:
+      - Analytics
+      summary: Get Rule Comparison Analysis
+      description: Get detailed analysis for a specific rule's JSON vs RAG performance.
+      operationId: get_rule_comparison_analysis_analytics_comparison_rules__rule_id__get
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Rule Id
+      - name: days_back
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Number of days to analyze
+          default: 30
+          title: Days Back
+        description: Number of days to analyze
+      - name: x-tenant-id
+        in: header
+        required: false
+        schema:
+          type: string
+          default: default
+          title: X-Tenant-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Get Rule Comparison Analysis Analytics Comparison
+                  Rules  Rule Id  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /analytics/health:
+    get:
+      tags:
+      - Analytics
+      summary: Analytics Health Check
+      description: Health check for analytics endpoints
+      operationId: analytics_health_check_analytics_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Analytics Health Check Analytics Health Get
+  /v1/services:
+    get:
+      tags:
+      - Services
+      summary: Get Services
+      description: Simple service discovery endpoint for local dev.
+      operationId: get_services_v1_services_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/health:
+    get:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Fedsuite Health Check
+      description: Health check doesn't require auth
+      operationId: fedsuite_health_check_fedsuite_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/{path}:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Proxy All
+      description: Proxy all other requests with JWT validation
+      operationId: proxy_all_fedsuite__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Proxy All
+      description: Proxy all other requests with JWT validation
+      operationId: proxy_all_fedsuite__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Proxy All
+      description: Proxy all other requests with JWT validation
+      operationId: proxy_all_fedsuite__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Proxy All
+      description: Proxy all other requests with JWT validation
+      operationId: proxy_all_fedsuite__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /fedsuite/upload-raw-tb/:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Upload Trial Balance
+      description: Handle trial balance upload with JWT auth
+      operationId: upload_trial_balance_fedsuite_upload_raw_tb__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/upload-gtas/:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Upload Gtas
+      description: Handle GTAS upload with JWT auth
+      operationId: upload_gtas_fedsuite_upload_gtas__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/reconcile/:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Reconcile
+      description: Handle reconciliation with JWT auth
+      operationId: reconcile_fedsuite_reconcile__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/validate-edits/:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Validate Edits
+      description: Handle validation with JWT auth
+      operationId: validate_edits_fedsuite_validate_edits__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /fedsuite/ai-recommendations/:
+    post:
+      tags:
+      - FedSuite
+      - FedSuite Proxy
+      summary: Ai Recommendations
+      description: Handle AI recommendations with JWT auth
+      operationId: ai_recommendations_fedsuite_ai_recommendations__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /propverify/{path}:
+    post:
+      tags:
+      - PropVerify
+      - PropVerify Proxy
+      summary: Propverify Proxy All
+      description: Proxy all requests to PropVerify service
+      operationId: propverify_proxy_all_propverify__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - PropVerify
+      - PropVerify Proxy
+      summary: Propverify Proxy All
+      description: Proxy all requests to PropVerify service
+      operationId: propverify_proxy_all_propverify__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - PropVerify
+      - PropVerify Proxy
+      summary: Propverify Proxy All
+      description: Proxy all requests to PropVerify service
+      operationId: propverify_proxy_all_propverify__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - PropVerify
+      - PropVerify Proxy
+      summary: Propverify Proxy All
+      description: Proxy all requests to PropVerify service
+      operationId: propverify_proxy_all_propverify__path__post
+      parameters:
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Body_create_validation_job_jobs_validate_post:
+      properties:
+        input_data:
+          additionalProperties: true
+          type: object
+          title: Input Data
+        options:
+          additionalProperties: true
+          type: object
+          title: Options
+      type: object
+      title: Body_create_validation_job_jobs_validate_post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

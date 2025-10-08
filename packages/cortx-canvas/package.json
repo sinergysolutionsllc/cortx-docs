@@ -1,0 +1,54 @@
+{
+  "name": "@sinergysolutions/cortx-canvas",
+  "version": "0.1.0",
+  "description": "Visual workflow canvas component with AI-assisted design for CORTX suites",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "workflow",
+    "canvas",
+    "reactflow",
+    "visual-designer",
+    "bpm",
+    "cortx"
+  ],
+  "author": "Sinergy Solutions LLC",
+  "license": "PROPRIETARY",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "reactflow": "^11.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5",
+    "zustand": "^4.5.2",
+    "dagre": "^0.8.5",
+    "elkjs": "^0.9.3",
+    "html-to-image": "^1.11.11"
+  },
+  "devDependencies": {
+    "@types/dagre": "^0.7.52",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "lucide-react": "^0.408.0",
+    "reactflow": "^11.11.4",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3"
+  }
+}

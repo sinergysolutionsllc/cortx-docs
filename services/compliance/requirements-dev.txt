@@ -1,0 +1,44 @@
+# Development and Testing Dependencies for Compliance Service
+
+# Testing Framework
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+pytest-timeout==2.2.0
+pytest-xdist==3.5.0  # Parallel test execution
+
+# HTTP Testing
+httpx==0.25.2
+requests==2.31.0
+
+# Mocking and Fixtures
+faker==20.1.0
+factory-boy==3.3.0
+
+# Code Quality
+ruff==0.1.8
+black==23.12.1
+mypy==1.7.1
+isort==5.13.2
+
+# Type Checking
+types-python-jose==3.3.4.8
+types-requests==2.31.0.10
+
+# Coverage Reporting
+coverage[toml]==7.3.3
+
+# Debugging
+ipdb==0.13.13
+ipython==8.18.1
+
+# Documentation
+pytest-html==4.1.1  # HTML test reports
+
+# Security Testing
+bandit==1.7.5
+safety==2.3.5
+
+# Load Testing (optional)
+locust==2.20.0

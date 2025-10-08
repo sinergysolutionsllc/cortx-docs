@@ -17,7 +17,7 @@
   "examples": [{
     "level": "module",
     "suite_id": "fedsuite",
-    "module_id": "fedtransform",
+    "module_id": "dataflow",
     "source_type": "url",
     "source_uri": "https://omb.gov/circulars/a-136.pdf",
     "metadata": { "tags": ["policy", "federal"] }
